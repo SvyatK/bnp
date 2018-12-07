@@ -17,6 +17,7 @@ fetch('/stages/1/units.json')
   .then(function(units) {
       for(const unit of units) {
         const tank = new Tank();
+        tank.setImgSource(unit.imgSource);
         tank.setAmmo(unit.ammo);
         tank.setArmour(unit.armour);
         tank.setSpeed(unit.speed);
