@@ -1,4 +1,4 @@
-export const TILE_PX = 64;
+export const TILE_PX = 32;
 export const GAME_X_T = 16;
 export const GAME_Y_T = 15;
 export const GAME_X_PX = GAME_X_T * TILE_PX;
