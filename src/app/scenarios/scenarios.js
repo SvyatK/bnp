@@ -3,6 +3,14 @@ import Bridge from '../engine/bridge';
 import Wall from '../engine/wall';
 import Water from '../engine/water';
 
+function onNavigation(){
+    if (window.location.hash.includes('scenario')) {
+        getLevelData(window.location.hash.split("/")[2]);
+    }
+}
+
+window.addEventListener('hashchange', onNavigation, false);
+
 function getLevelData(level) {
     fetch(`/stages/${level}/map.json`)
         .then(response => response.json())
