@@ -20,5 +20,13 @@ class Tank extends Unit {
     getArmour() {
         return this.armour;
     }
+
+    setSpeed(value) {
+        this.speed = parseInt(value);
+    }
+
+    getSpeed() {
+        return this.speed;
+    }
 }
 export default Tank;

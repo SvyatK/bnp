@@ -11,6 +11,7 @@ const water = new Water();
 const tank = new Tank();
 tank.setAmmo(44);
 tank.setArmour(123);
+tank.setSpeed(11);
 console.log(tank);
 
 console.log('bootstrap');
