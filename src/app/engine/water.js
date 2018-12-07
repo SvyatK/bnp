@@ -1,5 +1,5 @@
-import Entity from './entity';
-class Water extends Entity {
+import Sprite from './sprite';
+class Water extends Sprite {
     constructor() {
         super();
         console.log('water');

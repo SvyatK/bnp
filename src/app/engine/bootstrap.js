@@ -9,6 +9,9 @@ const bridge = new Bridge();
 const wall = new Wall();
 const water = new Water();
 const tank = new Tank();
+tank.setAmmo(44);
+tank.setArmour(123);
+console.log(tank);
 
 console.log('bootstrap');
 
