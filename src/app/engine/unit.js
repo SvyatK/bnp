@@ -2,9 +2,14 @@ import Facility from './facility';
 class Unit extends Facility {
     constructor() {
         super();
+        this.key = undefined;
         this.ammo = 0;
         this.armour = 0;
         this.speed = 0;
+    }
+
+    setKey(value) {
+        this.key = value;
     }
 
     setArmour(value) {

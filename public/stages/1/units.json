@@ -1,5 +1,6 @@
 [
     {
+        "key": "player1",
         "imgSource": "/images/default.gif",
         "damage": {
             "min": 10,
@@ -13,6 +14,35 @@
         "posY": 1
     },
     {
+        "key": "palyer2",
+        "imgSource": "/images/default.gif",
+        "damage": {
+            "min": 10,
+            "max": 20
+        },
+        "accuracy": 33,
+        "ammo": 1,
+        "armour": 2,
+        "speed": 3,
+        "posX": 1,
+        "posY": 1
+    },
+    {
+        "key": "bot1",
+        "imgSource": "/images/default.gif",
+        "damage": {
+            "min": 10,
+            "max": 20
+        },
+        "accuracy": 33,
+        "ammo": 1,
+        "armour": 2,
+        "speed": 3,
+        "posX": 1,
+        "posY": 1
+    },
+    {
+        "key": "bot2",
         "imgSource": "/images/default.gif",
         "damage": {
             "min": 10,
@@ -26,6 +56,7 @@
         "posY": 2
     },
     {
+        "key": "bot3",
         "imgSource": "/images/default.gif",
         "damage": {
             "min": 10,

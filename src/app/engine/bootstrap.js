@@ -17,6 +17,7 @@ fetch('/stages/1/units.json')
   .then(function(units) {
       for(const unit of units) {
         const tank = new Tank();
+        tank.setKey(unit.key);
         tank.setImgSource(unit.imgSource);
         tank.setDamage(unit.damage.min, unit.damage.max);
         tank.setAccuracy(unit.accuracy);
