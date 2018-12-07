@@ -6,6 +6,32 @@ class Tank extends Unit {
         this.accuracy = 0;
         this.minDamage = 0;
         this.maxDamage = 0;
+        this.bitcoin = 0;
+        this.frags = 0;
+    }
+
+    setBitcoin(value) {
+        this.bitcoin = parseInt(value);
+    }
+
+    getBitcoin() {
+        return this.bitcoin;
+    }
+
+    setFrags(value) {
+        this.frags = parseInt(value);
+    }
+
+    getFrags() {
+        return this.frags;
+    }
+
+    applyBitcoin(value) {
+        this.bitcoin += parseInt(value);
+    }
+
+    applyFrags(value) {
+        this.frags += parseInt(value);
     }
 
     setReloadDuration(value) {
