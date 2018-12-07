@@ -1,0 +1,17 @@
+[
+    {
+        "ammo": 1,
+        "armour": 2,
+        "speed": 3
+    },
+    {
+        "ammo": 4,
+        "armour": 5,
+        "speed": 6
+    },
+    {
+        "ammo": 7,
+        "armour": 8,
+        "speed": 9
+    }
+]
