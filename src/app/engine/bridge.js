@@ -3,7 +3,7 @@ class Bridge extends Sprite {
     constructor() {
         super();
         this.isCrossable = true;
-        console.log('bridge');
+        this.imgSource = '/images/bridge.jpg';
     }
 }
 export default Bridge;
