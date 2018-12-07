@@ -2,7 +2,6 @@ import Unit from './unit';
 class Tank extends Unit {
     constructor() {
         super();
-        console.log('tank');
     }
 
     fire() {
@@ -35,12 +34,5 @@ class Tank extends Unit {
         return this.speed;
     }
 
-    applyDamage(value) {
-        if (this.armour <= parseInt(value) {
-            this.armour = 0;
-        } else {
-            this.armour -= parseInt(value);
-        }
-    }
 }
 export default Tank;

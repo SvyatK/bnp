@@ -35,5 +35,13 @@ class Unit extends Facility {
         this.setPosX(x);
         this.setPosY(y);
     }
+
+    applyDamage(value) {
+        if (this.armour <= parseInt(value)) {
+            this.armour = 0;
+        } else {
+            this.armour -= parseInt(value);
+        }
+    }
 }
 export default Unit;
