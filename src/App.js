@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     const component = this;
     return (
-      <div ref={(thisDiv) => {component.gameCanvas = thisDiv}} />
+      <div className="canvas-wrapper" ref={(thisDiv) => {component.gameCanvas = thisDiv}} />
     );
   }
 }
