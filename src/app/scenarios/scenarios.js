@@ -5,7 +5,6 @@ import Water from '../engine/water';
 import Route from '../routes/route';
 import * as Constants from '../constants.js';
 import Unit from "../engine/unit";
-import {renderEnvironment, renderUnits} from "../renderer/renderer";
 
 export const mapItems = [];
 export const units = [];
@@ -55,9 +54,6 @@ function getLevelData(level) {
                     }
                 }
             }
-        })
-        .then(() => {
-            renderEnvironment(mapItems); // TODO: for tests, remove after
         });
 
     fetch(`/stages/${level}/units.json`)
@@ -68,9 +64,6 @@ function getLevelData(level) {
                 unit.setCoordinates(item.posX * Constants.TILE_PX, item.posY * Constants.TILE_PX);
                 units.push(unit);
             }
-        })
-        .then(() => {
-            renderUnits(units); // TODO: for tests, remove after
         });
 
 }
