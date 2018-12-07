@@ -64,7 +64,7 @@ function getLevelData(level) {
 
                 const graphicItem = new PIXI.Sprite(texture);
                 graphicItem.x = Constants.TILE_PX + resultItem.getPosX();
-                graphicItem.y = Constants.TILE_PX + resultItem.getPosY();
+                graphicItem.y = resultItem.getPosY();
                 graphicItem.height = Constants.TILE_PX;
                 graphicItem.width = Constants.TILE_PX;
                 main.stage.addChild(graphicItem);
@@ -79,7 +79,7 @@ function getLevelData(level) {
                         const texture = PIXI.Texture.fromImage(unit.getImgSource());
                         const graphicItem = new PIXI.Sprite(texture);
                         graphicItem.x = Constants.TILE_PX + unit.getPosX();
-                        graphicItem.y = Constants.TILE_PX + unit.getPosY();
+                        graphicItem.y = unit.getPosY();
                         graphicItem.height = Constants.TILE_PX;
                         graphicItem.width = Constants.TILE_PX;
                         units.push(unit);
