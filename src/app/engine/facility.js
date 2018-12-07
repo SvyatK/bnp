@@ -15,5 +15,26 @@ class Facility {
     getImgSource() {
         return this.imgSource;
     }
+
+    setPosX(value) {
+        this.posX = value;
+    }
+
+    getPosX() {
+        return this.posX;
+    }
+
+    setPosY(value) {
+        this.posY = value;
+    }
+
+    getPosY() {
+        return this.posY;
+    }
+
+    setCoordinates(x ,y) {
+        this.setPosX(x);
+        this.setPosY(y);
+    }
 }
 export default Facility;

@@ -15,27 +15,6 @@ class Unit extends Facility {
         return this.armour;
     }
 
-    setPosX(value) {
-        this.posX = value;
-    }
-
-    getPosX() {
-        return this.posX;
-    }
-
-    setPosY(value) {
-        this.posY = value;
-    }
-
-    getPosY() {
-        return this.posY;
-    }
-
-    setCoordinates(x ,y) {
-        this.setPosX(x);
-        this.setPosY(y);
-    }
-
     applyDamage(value) {
         if (this.armour <= parseInt(value)) {
             this.armour = 0;
