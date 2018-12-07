@@ -2,6 +2,7 @@
     {
         "key": "player1",
         "imgSource": "/images/default.gif",
+        "reloadDuration": 1000,
         "damage": {
             "min": 10,
             "max": 20
@@ -16,6 +17,7 @@
     {
         "key": "palyer2",
         "imgSource": "/images/default.gif",
+        "reloadDuration": 1000,
         "damage": {
             "min": 10,
             "max": 20
@@ -30,6 +32,7 @@
     {
         "key": "bot1",
         "imgSource": "/images/default.gif",
+        "reloadDuration": 1000,
         "damage": {
             "min": 10,
             "max": 20
@@ -44,6 +47,7 @@
     {
         "key": "bot2",
         "imgSource": "/images/default.gif",
+        "reloadDuration": 1000,
         "damage": {
             "min": 10,
             "max": 20
@@ -58,6 +62,7 @@
     {
         "key": "bot3",
         "imgSource": "/images/default.gif",
+        "reloadDuration": 1000,
         "damage": {
             "min": 10,
             "max": 20

@@ -21,6 +21,7 @@ for(const stage in stages) {
           const tank = new Tank();
           tank.setKey(unit.key);
           tank.setImgSource(unit.imgSource);
+          tank.setReloadDuration(unit.reloadDuration);
           tank.setDamage(unit.damage.min, unit.damage.max);
           tank.setAccuracy(unit.accuracy);
           tank.setAmmo(unit.ammo);

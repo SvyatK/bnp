@@ -2,9 +2,18 @@ import Unit from './unit';
 class Tank extends Unit {
     constructor() {
         super();
+        this.reloadDuration = 0;
         this.accuracy = 0;
         this.minDamage = 0;
         this.maxDamage = 0;
+    }
+
+    setReloadDuration(value) {
+        this.reloadDuration = parseInt(value);
+    }
+
+    getReloadDuration() {
+        return this.reloadDuration;
     }
 
     setMinDamage(value) {
