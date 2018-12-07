@@ -3,7 +3,7 @@ import Bridge from './bridge';
 import Bonus from './bonus';
 import Wall from './wall';
 import Water from './water';
-import Tank from './tank';
+import DefaultTank from './tanks/tank';
 
 const road = new Road();
 const bridge = new Bridge();
@@ -16,7 +16,7 @@ fetch('/stages/1/units.json')
   .then(response => response.json())
   .then(function(units) {
       for(const unit of units) {
-        const tank = new Tank();
+        const tank = new DefaultTank();
         tank.setImgSource(unit.imgSource);
         tank.setAmmo(unit.ammo);
         tank.setArmour(unit.armour);

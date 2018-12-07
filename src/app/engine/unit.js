@@ -5,6 +5,7 @@ class Unit extends Facility {
         this.ammo = 0;
         this.armour = 0;
         this.speed = 0;
+        this.rapidityOfFire = 0;
     }
 
     setArmour(value) {
