@@ -14,10 +14,10 @@ window.addEventListener("gamepadconnected", function(e) {
 });
 
 function buttonPressed(b) {
-    if (typeof(b) == "object") {
+    if (typeof(b) === "object") {
         return b.pressed;
     }
-    return b == 1.0;
+    return b === 1.0;
 }
 
 
@@ -79,8 +79,7 @@ function enableButtonHandling() {
     //refresh gamepads
     navigator.getGamepads();
 
-    for (let index = 0; index < gamepads.length; index++) {
-        let gp = gamepads[index];
+    for (const gp of gamepads) {
         if (gp.mapping === 'standard') {
             processStandardController(gp);
         } else {
