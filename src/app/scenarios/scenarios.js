@@ -45,5 +45,3 @@ function getLevelData(level) {
             return result;
         });
 }
-
-getLevelData(1);

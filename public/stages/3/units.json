@@ -1,0 +1,26 @@
+[
+    {
+        "imgSource": "/images/default.gif",
+        "ammo": 1,
+        "armour": 2,
+        "speed": 3,
+        "posX": 1,
+        "posY": 1
+    },
+    {
+        "imgSource": "/images/default.gif",
+        "ammo": 4,
+        "armour": 5,
+        "speed": 6,
+        "posX": 2,
+        "posY": 2
+    },
+    {
+        "imgSource": "/images/default.gif",
+        "ammo": 7,
+        "armour": 8,
+        "speed": 9,
+        "posX": 3,
+        "posY": 3
+    }
+]
