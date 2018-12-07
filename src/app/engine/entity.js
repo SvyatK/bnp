@@ -6,7 +6,7 @@ class Entity extends Facility {
     }
 
     applyDamage(value) {
-        if (this.armour <= parseInt(value) {
+        if (this.armour <= parseInt(value)) {
             this.armour = 0;
         } else {
             this.armour -= parseInt(value);
