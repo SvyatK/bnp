@@ -24,11 +24,11 @@ export default class GameState {
                         return innt.object !== ent.object;
                     })
                     .filter((innt) => {
-                        return isersects(innt.object, ent.object);
+                        return isIntersects(innt.object, ent.object);
                     })
                     .forEach((innt) => {
                         // resolve collisions
-                        pull(EventBus._queue, innt); // https://lodash.com/docs/4.17.11#pull
+                        pull(EventBus._queue, innt, ent); // https://lodash.com/docs/4.17.11#pull
                     });
             }
         });
@@ -41,30 +41,28 @@ export default class GameState {
     }
 }
 
-/*
-    x1, y1 - левая нижняя точка первого прямоугольника
-    x2, y2 - правая верхняя точка первого прямоугольника
-    x3, y3 - левая нижняя точка второго прямоугольника
-    x4, y4 - правая верхняя точка второго прямоугольника
-*/
+//
+// +--------------------> X axis
+// |
+// |    (X,Y)      (X+W, Y)
+// |    +--------------+
+// |    |              |
+// |    |              |
+// |    |              |
+// |    +--------------+
+// v    (X, Y+H)     (X+W,Y+H)
+//
+// Y axis
 
-function isersects(o1, o2) {
-    const x1 = o1.posX;
-    const y1 = o1.posY+TILE_PX;
-    const x2 = o1.posX+TILE_PX;
-    const y2 = o1.posY;
-    const x3 = o2.posX;
-    const y3 = o2.posY+TILE_PX;
-    const x4 = o2.posX+TILE_PX;
-    const y4 = o2.posY;
+function isIntersects ( a, b ) {
+    const ax = a.posX;
+    const ax1 = a.posX+TILE_PX;
+    const ay = a.posY;
+    const ay1 = a.posY+TILE_PX;
+    const bx = b.posX;
+    const bx1 = b.posX+TILE_PX;
+    const by = b.posY;
+    const by1 = b.posY+TILE_PX;
 
-    const left = Math.max(x1, x3);
-    const top = Math.min(y2, y4);
-    const right = Math.min(x2, x4);
-    const bottom = Math.max(y1, y3);
-
-    const width = right - left;
-    const height = top - bottom;
-
-    return !(width < 0 || height < 0);
+    return !(ax1 < bx || bx1 < ax || ay1 < by || by1 < ay);
 }
