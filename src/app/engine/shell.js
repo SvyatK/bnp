@@ -1,6 +1,6 @@
 import Facility from './facility';
 import { Events } from './EventBus';
-import { SHELL_PX } from '../constants'; 
+import { SHELL_PX, TILE_PX, SHELL_OFFSET_PX } from '../constants'; 
 
 const getImageSource = (directionEvent) => {
     switch (directionEvent) { // eslint-disable-line
@@ -28,9 +28,7 @@ export default class Shell extends Facility {
         this.speed = 1;
         this.direction = ''
         this._mover = () => {};
-        this._initShellByDirection(currentTank.getLastEvent());
-        this.setPosX(currentTank.getPosX());
-        this.setPosY(currentTank.getPosY());
+        this._initShellByDirection(currentTank);
     }
 
     setSpeed(value) {
@@ -46,19 +44,19 @@ export default class Shell extends Facility {
     }
 
     _moveUp() {
-        return () => { this.setPosY(this.getPosY() - 3) };
+        return () => { this.setPosY(this.getPosY() - SHELL_OFFSET_PX) };
     }
 
     _moveDown() {
-        return () => { this.setPosY(this.getPosY() + 3) };
+        return () => { this.setPosY(this.getPosY() + SHELL_OFFSET_PX) };
     }
 
     _moveRight() {
-        return () => { this.setPosX(this.getPosX() + 3) };
+        return () => { this.setPosX(this.getPosX() + SHELL_OFFSET_PX) };
     }
 
     _moveLeft() {
-        return () => { this.setPosX(this.getPosX() - 3) };
+        return () => { this.setPosX(this.getPosX() - SHELL_OFFSET_PX) };
     }
 
     run() {
@@ -66,26 +64,34 @@ export default class Shell extends Facility {
         console.log('start loop for shell fly');
     }
 
-    _initShellByDirection(directionEvent) {
-        switch (directionEvent) { // eslint-disable-line
+    _initShellByDirection(tank) {
+        switch (tank.getLastEvent()) { // eslint-disable-line
             case Events.TANK_MOVE_UP: {
                 this.setImgSource('/images/bullet_up.png');
                 this._mover = this._moveUp();
+                this.setPosX(tank.getPosX() + (TILE_PX / 2 - SHELL_PX / 2));
+                this.setPosY(tank.getPosY() - SHELL_PX);
                 break;
             }
             case Events.TANK_MOVE_DOWN: {
                 this.setImgSource('/images/bullet_down.png');
                 this._mover = this._moveDown();
+                this.setPosX(tank.getPosX() + (TILE_PX / 2 - SHELL_PX / 2));
+                this.setPosY(tank.getPosY() + TILE_PX);
                 break;
             }
             case Events.TANK_MOVE_LEFT: {
                 this.setImgSource('/images/bullet_left.png');
                 this._mover = this._moveLeft();
+                this.setPosX(tank.getPosX() - SHELL_PX);
+                this.setPosY(tank.getPosY() + (TILE_PX / 2 - SHELL_PX / 2));
                 break;
             }
             case Events.TANK_MOVE_RIGHT: {
                 this.setImgSource('/images/bullet_right.png');
                 this._mover = this._moveRight();
+                this.setPosX(tank.getPosX() + TILE_PX);
+                this.setPosY(tank.getPosY() + (TILE_PX / 2 - SHELL_PX / 2));
                 break;
             }
             default: 
