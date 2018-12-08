@@ -63,10 +63,10 @@ function processCustomController(gamepad){
         console.log('click a');
         units.forEach((unit) => {
             if (unit.key.includes('player2')){
-                const direction = unit.getLastEvent();
-                const currentShell = new Shell(direction);
-                shells = [...shells, currentShell];
-                EventBus.playerReveal(direction, currentShell);
+                const currentShell = new Shell(unit);
+                shells.push(currentShell);
+                EventBus.playerReveal(unit.getLastEvent(), currentShell);
+                currentShell.run();
             }
         });
     }
@@ -115,12 +115,10 @@ function processStandardController(gamepad){
         console.log('click a');
         units.forEach((unit) => {
             if (unit.key.includes('player1')){
-                const direction = unit.getLastEvent();
-                const currentShell = new Shell(direction);
-                currentShell.setPosX(unit.getPosX());
-                currentShell.setPosY(unit.getPosY());
-                shells = [...shells, currentShell];
-                EventBus.playerReveal(direction, currentShell);
+                const currentShell = new Shell(unit);
+                shells.push(currentShell);
+                EventBus.playerReveal(unit.getLastEvent(), currentShell);
+                currentShell.run();
             }
         });
     }

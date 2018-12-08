@@ -50,18 +50,11 @@ window.addEventListener('keydown', (event) => {
         }
         case 'Space': {
             units.forEach((unit) => {
-                if (unit.key.includes('player1')) {
-                    units.forEach((unit) => {
-                        if (unit.key.includes('player1')){
-                            const direction = unit.getLastEvent();
-                            const currentShell = new Shell(direction);
-                            currentShell.setPosX(unit.getPosX());
-                            currentShell.setPosY(unit.getPosY());
-                            shells.push(currentShell);
-                            EventBus.playerReveal(direction, currentShell);
-                        }
-                    });
-                    EventBus.playerReveal(unit.getLastEvent(), unit);
+                if (unit.key.includes('player1')){
+                    const currentShell = new Shell(unit);
+                    shells.push(currentShell);
+                    EventBus.playerReveal(unit.getLastEvent(), currentShell);
+                    currentShell.run();
                 }
             });
             

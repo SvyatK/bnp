@@ -3,16 +3,16 @@ import { Events } from './EventBus';
 
 const getImageSource = (directionEvent) => {
     switch (directionEvent) { // eslint-disable-line
-        case Events.SHELL_MOVE_UP: {
+        case Events.TANK_MOVE_UP: {
             return '/images/bullet_up.png';
         }
-        case Events.SHELL_MOVE_DOWN: {
+        case Events.TANK_MOVE_DOWN: {
             return '/images/bullet_down.png';
         }
-        case Events.SHELL_MOVE_LEFT: {
+        case Events.TANK_MOVE_LEFT: {
             return '/images/bullet_left.png';
         }
-        case Events.SHELL_MOVE_RIGHT: {
+        case Events.TANK_MOVE_RIGHT: {
             return '/images/bullet_right.png';
         }
         default: 
@@ -21,11 +21,14 @@ const getImageSource = (directionEvent) => {
 };
 
 export default class Shell extends Facility {
-    constructor(directionEvent) {
+    constructor(currentTank) {
         super();
         this.key = undefined;
-        this.speed = 2;
+        this.speed = 1;
+        const directionEvent = currentTank.getLastEvent();
         this.setImgSource(getImageSource(directionEvent));
+        this.setPosX(currentTank.getPosX());
+        this.setPosY(currentTank.getPosY());
     }
 
     setSpeed(value) {
@@ -41,6 +44,7 @@ export default class Shell extends Facility {
     }
 
     run() {
+        setInterval(() => { this.setPosY(this.getPosY() - 3) }, (20 * this.speed));
         console.log('start loop for shell fly');
     }
 }
