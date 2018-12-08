@@ -6,6 +6,7 @@ import './app/controller/keyboard.js';
 import './app/controller/gamepad.js';
 import main from './app/main';
 import {gameLoop, requestAnimationFrameId} from "./app/engine/gameLoop";
+import playSound from "./app/soundPlayer";
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
     this.app = main;
     this.gameCanvas.appendChild(main.view);
 
+    playSound('stage_start');
     gameLoop();
   }
 
