@@ -66,12 +66,13 @@ class Menu {
 
 const onNavigation = () => {
   const menu = new Menu(main);
-  switch (Route.getPage()) {
+  const path = Route.getPage();
+  console.log(`current path ${path}`);
+  switch (path) { // eslint-disable-line
     case Route.PAGES[0]: {
       console.log(Route.PAGES[0]);
       menu.setTitle('Select Mode:');
       menu.setItems(modeMenuItems);
-      // menu.getCurrentItem().execute();
       break;
     }
     case Route.PAGES[1]: {
@@ -102,11 +103,9 @@ const onNavigation = () => {
       menu.setItems(gameOverMenuItems);
       break;
     }
-    default:
-        console.warn('default');
-        break;
   }
   menu.renderMenu();
 }
 
 window.addEventListener('hashchange', onNavigation, false);
+window.location = `${window.location.origin}/#/mode`;
