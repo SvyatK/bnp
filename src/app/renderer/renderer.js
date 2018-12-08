@@ -3,6 +3,7 @@ import * as Constants from "../constants";
 import main from "../main";
 import {mapItems, units, shells} from "../scenarios/scenarios";
 import {Events} from "../engine/EventBus";
+// import Route from "../routes/route";
 
 function renderEnvironment(items) {
     items.forEach((item) => {
@@ -160,6 +161,24 @@ function renderHUD(unitArray) {
             graphicItem.height = Constants.TILE_PX;
             graphicItem.width = Constants.TILE_PX;
             main.stage.addChild(graphicItem);
+
+            // if (Route.getPage().includes('scenario')) {
+            //     const style = new PIXI.TextStyle({
+            //         fontFamily: 'monospace',
+            //         fontSize: 72,
+            //         fontWeight: 'bold',
+            //         fill: ['#555555', '#555555'], // gradient
+            //         // stroke: '#4a1850',
+            //         // strokeThickness: 5,
+            //     });
+            //     const level = Route.getPage().split('/')[1];
+            //
+            //     const richText = new PIXI.Text(level.toString(), style);
+            //     richText.x = 277;
+            //     richText.y = 590;
+            //
+            //     main.stage.addChild(richText);
+            // }
         }
     });
 }
