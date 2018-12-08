@@ -46,5 +46,8 @@ window.addEventListener('keydown', (event) => {
 
             break;
         }
+        default:
+            console.warn('default');
+            break;
     }
 });

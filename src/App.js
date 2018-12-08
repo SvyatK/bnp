@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import './app/menu/menu.js';
 import './app/scenarios/scenarios.js';
-import './app/controller/keyboard.js';
 import './app/controller/gamepad.js';
 import main from './app/main';
 

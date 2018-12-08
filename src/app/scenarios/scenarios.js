@@ -8,6 +8,8 @@ import Tank from "../engine/tank";
 import stages from '../stages/stages';
 import {gameLoop, requestAnimationFrameId} from "../engine/gameLoop";
 import playSound from "../soundPlayer";
+import '../controller/keyboard';
+
 
 export let mapItems = [];
 export let units = [];
@@ -59,6 +61,9 @@ function getLevelData(level) {
                     mapItems.push(bridge);
                     break;
                 }
+                default:
+                    console.warn('default');
+                    break;
             }
         }
     }
