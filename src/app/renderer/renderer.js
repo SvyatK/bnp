@@ -39,6 +39,9 @@ function renderUnits(unitArray) {
                 graphicItem.rotation = Math.PI;
                 break;
             }
+            default:
+                console.warn('default');
+                break;
         }
 
         graphicItem.x = Constants.TILE_PX + unit.getPosX();

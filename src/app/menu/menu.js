@@ -102,9 +102,9 @@ const onNavigation = () => {
       menu.setItems(gameOverMenuItems);
       break;
     }
-    default: {
-      // DEL
-    }
+    default:
+        console.warn('default');
+        break;
   }
   menu.renderMenu();
 }

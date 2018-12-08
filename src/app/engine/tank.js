@@ -1,6 +1,5 @@
 import Unit from './unit';
-import EventBus, {Events} from "./EventBus";
-import * as random from 'lodash.random';
+import {Events} from "./EventBus";
 
 class Tank extends Unit {
     constructor() {
@@ -137,6 +136,10 @@ class Tank extends Unit {
                 this.moveRight();
                 break;
             }
+
+            default:
+                console.warn('default');
+                break;
         }
     }
 
@@ -161,6 +164,10 @@ class Tank extends Unit {
                 this.posX = itemForUpdate.posX - 32;
                 break;
             }
+
+            default:
+                console.warn('default');
+                break;
         }
     }
 
