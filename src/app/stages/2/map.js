@@ -1,8 +1,8 @@
-{
-    "name": "First meet",
+export const map = {
+    "name": "Second meet",
     "scheme": [
         "0000000000000",
-        "0w0w0w0w0w0w0",
+        "0000000000000",
         "0w0w0w0w0w0w0",
         "0w0w0www0w0w0",
         "0w0w0w0w0w0w0",
@@ -14,5 +14,5 @@
         "0w0w0w0w0w0w0",
         "0w0w0w0w0w0w0",
         "0w0w00000w0w0",
-        "rr000www000bb"]
-}
+        "00000ww000000"]
+};
