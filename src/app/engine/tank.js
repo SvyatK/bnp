@@ -1,6 +1,6 @@
 import Unit from './unit';
 import {Events} from "./EventBus";
-import {TILE_PX} from "../constants";
+import {TILE_PX, BATTLE_FIELD_Y_PX, BATTLE_FIELD_X_PX} from "../constants";
 
 class Tank extends Unit {
     constructor() {
@@ -184,19 +184,28 @@ class Tank extends Unit {
 
     moveUp() {
         const currentY = this.getPosY();
-        this.setPosY(currentY - 1);
+        if (currentY > 0) {
+            this.setPosY(currentY - 1);
+        }
     }
     moveDown() {
         const currentY = this.getPosY();
-        this.setPosY(currentY + 1);
+        if (currentY < (BATTLE_FIELD_Y_PX - TILE_PX)) {
+            this.setPosY(currentY + 1);
+        }
     }
     moveLeft() {
         const currentX = this.getPosX();
-        this.setPosX(currentX - 1);
+        if (currentX > 0) {
+            this.setPosX(currentX - 1);
+        }
     }
     moveRight() {
         const currentX = this.getPosX();
-        this.setPosX(currentX + 1);
+        if (currentX < (BATTLE_FIELD_X_PX - TILE_PX)) {
+            this.setPosX(currentX + 1);
+        }
+
     }
 
 }
