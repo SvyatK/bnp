@@ -1,6 +1,7 @@
 import Route from '../routes/route';
 import modeMenuItems from './modeMenuItems';
 import gameOverMenuItems from './gameOverMenuItems';
+import scoresMenuItems from './scoresMenuItems';
 import main from '../main';
 import * as PIXI from 'pixi.js';
 import { TILE_PX } from '../constants';
@@ -77,6 +78,8 @@ const onNavigation = () => {
     }
     case Route.PAGES[2]: {
       console.log(Route.PAGES[2]);
+      menu.setTitle('Your Scores:');
+      menu.setItems(scoresMenuItems);
       break;
     }
     case Route.PAGES[3]: {
