@@ -14,23 +14,6 @@ const water = new Water();
 const stages = [1, 2, 3];
 for(const stage in stages) {
   const tanks = [];
-  fetch('/stages/' + stages[stage] + '/units.json')
-    .then(response => response.json())
-    .then(function(units) {
-        for(const unit of units) {
-          const tank = new Tank();
-          tank.setKey(unit.key);
-          tank.setImgSource(unit.imgSource);
-          tank.setReloadDuration(unit.reloadDuration);
-          tank.setDamage(unit.damage.min, unit.damage.max);
-          tank.setAccuracy(unit.accuracy);
-          tank.setAmmo(unit.ammo);
-          tank.setArmour(unit.armour);
-          tank.setSpeed(unit.speed);
-          tank.setCoordinates(unit.posX, unit.posY);
-          tanks.push(tank);
-        }
-  });
   console.log(tanks);
 }
 

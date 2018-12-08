@@ -15,7 +15,7 @@
         "posY": 1
     },
     {
-        "key": "palyer2",
+        "key": "player2",
         "imgSource": "/images/default.gif",
         "reloadDuration": 1000,
         "damage": {

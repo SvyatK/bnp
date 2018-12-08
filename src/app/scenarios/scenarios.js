@@ -4,10 +4,13 @@ import Wall from '../engine/wall';
 import Water from '../engine/water';
 import Route from '../routes/route';
 import * as Constants from '../constants.js';
-import Unit from "../engine/unit";
+import * as Render from "../renderer/renderer";
+import Tank from "../engine/tank";
 
-export const mapItems = [];
-export const units = [];
+export let mapItems = [];
+export let units = [];
+export let player1 = null;
+export let player2 = null;
 
 function onNavigation(){
     if (Route.getPage().includes('scenario')) {
@@ -17,11 +20,14 @@ function onNavigation(){
 
 window.addEventListener('hashchange', onNavigation, false);
 
+onNavigation();
+
 function getLevelData(level) {
 
     fetch(`/stages/${level}/map.json`)
         .then(response => response.json())
         .then((data) => {
+            mapItems = [];
             for (let i = 0; i < data.scheme.length; i++) {
                 const row = data.scheme[i];
                 for (let j = 0; j < row.length; j++) {
@@ -59,11 +65,21 @@ function getLevelData(level) {
     fetch(`/stages/${level}/units.json`)
         .then(response => response.json())
         .then((data) => {
+            units = [];
             for (const item of data) {
-                const unit = new Unit();
-                unit.setCoordinates(item.posX * Constants.TILE_PX, item.posY * Constants.TILE_PX);
-                units.push(unit);
+                const tank = new Tank();
+                tank.setKey(item.key);
+                tank.setImgSource(item.imgSource);
+                tank.setReloadDuration(item.reloadDuration);
+                tank.setDamage(item.damage.min, item.damage.max);
+                tank.setAccuracy(item.accuracy);
+                tank.setAmmo(item.ammo);
+                tank.setArmour(item.armour);
+                tank.setSpeed(item.speed);
+                tank.setCoordinates(item.posX * Constants.TILE_PX, item.posY * Constants.TILE_PX);
+                units.push(tank);
             }
+            Render.rerender();
         });
 
 }
