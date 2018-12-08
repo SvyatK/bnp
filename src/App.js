@@ -14,7 +14,6 @@ class App extends Component {
     this.app = main;
     this.gameCanvas.appendChild(main.view);
 
-    gameLoop();
   }
 
   componentWillUnmount() {

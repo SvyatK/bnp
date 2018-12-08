@@ -116,6 +116,7 @@ class Tank extends Unit {
 
     move(direction) {
         this.lastEvent = direction;
+        clearTimeout(this.timeout);
         switch (direction) {
             case Events.TANK_MOVE_UP: {
                 this.moveUp();
@@ -139,34 +140,64 @@ class Tank extends Unit {
         }
     }
 
+    adjustCoordinates(direction) {
+        switch (direction) {
+            case Events.TANK_MOVE_UP: {
+                this.posY = this.posY + 2;
+                break;
+            }
+
+            case Events.TANK_MOVE_DOWN: {
+                this.posY = this.posY - 2;
+                break;
+            }
+
+            case Events.TANK_MOVE_LEFT: {
+                this.posX = this.posX + 2;
+                break;
+            }
+
+            case Events.TANK_MOVE_RIGHT: {
+                this.posX = this.posX - 2;
+                break;
+            }
+        }
+    }
+
+
+
     moveUp() {
         const currentY = this.getPosY();
-        this.setPosY(currentY - 1);
+
+        if(currentY % 32 !== 0) {
+            this.setPosY(currentY - 1);
+            this.timeout = setTimeout(this.moveUp.bind(this), 1000/30);
+        }
     }
     moveDown() {
         const currentY = this.getPosY();
-        this.setPosY(currentY + 1);
+
+        if(currentY % 32 !== 0) {
+            this.setPosY(currentY + 1);
+            this.timeout = setTimeout(this.moveDown.bind(this), 1000/30);
+        }
     }
     moveLeft() {
         const currentX = this.getPosX();
-        this.setPosX(currentX - 1);
+
+        if(currentX % 32 !== 0) {
+            this.setPosX(currentX - 1);
+            this.timeout = setTimeout(this.moveLeft.bind(this), 1000/30);
+        }
     }
     moveRight() {
         const currentX = this.getPosX();
-        this.setPosX(currentX + 1);
+        if(currentX % 32 !== 0) {
+            this.setPosX(currentX + 1);
+            this.timeout = setTimeout(this.moveRight.bind(this), 1000/30);
+        }
+
     }
 
-    randomIntent() {
-        const move = random(0, 3);
-
-        const events = [
-            Events.TANK_MOVE_UP,
-            Events.TANK_MOVE_DOWN,
-            Events.TANK_MOVE_LEFT,
-            Events.TANK_MOVE_RIGHT,
-        ];
-
-        EventBus.reveal(events[move], this);
-    }
 }
 export default Tank;

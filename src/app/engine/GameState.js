@@ -1,4 +1,4 @@
-import {units} from "../scenarios/scenarios";
+import {units, mapItems} from "../scenarios/scenarios";
 import EventBus from "./EventBus";
 import {TILE_PX} from "../constants";
 
@@ -19,7 +19,19 @@ export default class GameState {
                             }
                         }
                     });
-                canSendEvent && ent.object.act(ent.eventName);
+                mapItems.forEach((mapItem) => {
+                    if (!mapItem.isCrossable) {
+                        if( isIntersects(mapItem, ent.object)){
+                            canSendEvent = false;
+                        }
+                    }
+                });
+
+                if(canSendEvent){
+                    ent.object.act(ent.eventName);
+                }else{
+                    ent.object.adjustCoordinates(ent.eventName);
+                }
             }
         });
 

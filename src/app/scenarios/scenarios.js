@@ -7,6 +7,7 @@ import * as Constants from '../constants.js';
 import * as Render from "../renderer/renderer";
 import Tank from "../engine/tank";
 import stages from '../stages/stages';
+import {gameLoop} from "../engine/gameLoop";
 
 export let mapItems = [];
 export let units = [];
@@ -75,5 +76,5 @@ function getLevelData(level) {
         tank.setCoordinates(item.posX * Constants.TILE_PX, item.posY * Constants.TILE_PX);
         units.push(tank);
     }
-    Render.reRender();
+    gameLoop();
 }
