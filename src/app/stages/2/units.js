@@ -1,7 +1,7 @@
 export const units = [
     {
         "key": "player1",
-        "imgSource": "/images/default.gif",
+        "imgSource": "/images/tank1.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
@@ -16,7 +16,7 @@ export const units = [
     },
     {
         "key": "player2",
-        "imgSource": "/images/default.gif",
+        "imgSource": "/images/tank2.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
