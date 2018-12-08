@@ -54,7 +54,7 @@ function renderHUD(unitArray) {
         if (unit.key.includes('player')) {
             const second = unit.key.includes('2');
             //ammo icon
-            let texture = PIXI.Texture.fromImage('/images/default.gif');
+            let texture = PIXI.Texture.fromImage('/images/ammo.png');
             let icon = new PIXI.Sprite(texture);
             icon.x = second ? Constants.GAME_X_PX - 40 : 20;
             icon.y = Constants.BATTLE_FIELD_Y_PX + 15;
@@ -63,7 +63,7 @@ function renderHUD(unitArray) {
             main.stage.addChild(icon);
 
             //armor icon
-            texture = PIXI.Texture.fromImage('/images/default.gif');
+            texture = PIXI.Texture.fromImage('/images/armour.png');
             icon = new PIXI.Sprite(texture);
             icon.x = second ? Constants.GAME_X_PX - 40 : 20;
             icon.y = Constants.BATTLE_FIELD_Y_PX + 40;
@@ -72,7 +72,7 @@ function renderHUD(unitArray) {
             main.stage.addChild(icon);
 
             //reload icon
-            texture = PIXI.Texture.fromImage('/images/default.gif');
+            texture = PIXI.Texture.fromImage('/images/reload.png');
             icon = new PIXI.Sprite(texture);
             icon.x = second ? Constants.GAME_X_PX - 40 : 20;
             icon.y = Constants.BATTLE_FIELD_Y_PX + 65;
@@ -81,7 +81,7 @@ function renderHUD(unitArray) {
             main.stage.addChild(icon);
 
             //currency icon
-            texture = PIXI.Texture.fromImage('/images/default.gif');
+            texture = PIXI.Texture.fromImage('/images/bitcoin.png');
             icon = new PIXI.Sprite(texture);
             icon.x = second ? Constants.GAME_X_PX - 110 : 90;
             icon.y = Constants.BATTLE_FIELD_Y_PX + 15;
@@ -90,7 +90,7 @@ function renderHUD(unitArray) {
             main.stage.addChild(icon);
 
             //frags icon
-            texture = PIXI.Texture.fromImage('/images/default.gif');
+            texture = PIXI.Texture.fromImage('/images/frags.png');
             icon = new PIXI.Sprite(texture);
             icon.x = second ? Constants.GAME_X_PX - 180 : 160;
             icon.y = Constants.BATTLE_FIELD_Y_PX + 15;
