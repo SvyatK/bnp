@@ -24,7 +24,7 @@ const getImageSource = (directionEvent) => {
 export default class Shell extends Facility {
     constructor(currentTank) {
         super();
-        this.key = undefined;
+        this.key = currentTank.key;
         this.speed = 1;
         this.direction = ''
         this._mover = () => {};
@@ -62,6 +62,10 @@ export default class Shell extends Facility {
     run() {
         setInterval(this._mover, (20 * this.speed));
         console.log('start loop for shell fly');
+    }
+
+    act(eventName) {
+        // TODO: check events
     }
 
     _initShellByDirection(tank) {

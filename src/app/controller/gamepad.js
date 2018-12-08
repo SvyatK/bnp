@@ -62,7 +62,7 @@ function processCustomController(gamepad){
     if (buttonPressed(gamepad.buttons[2])) {
         console.log('click a');
         units.forEach((unit) => {
-            if (unit.key.includes('player2')){
+            if (unit.key.includes('player2') && !unit.isDead){
                 const currentShell = new Shell(unit);
                 shells.push(currentShell);
                 EventBus.playerReveal(unit.getLastEvent(), currentShell);
@@ -114,7 +114,7 @@ function processStandardController(gamepad){
         console.log('FIRE!!!');
         console.log('click a');
         units.forEach((unit) => {
-            if (unit.key.includes('player1')){
+            if (unit.key.includes('player1') && !unit.isDead){
                 const currentShell = new Shell(unit);
                 shells.push(currentShell);
                 EventBus.playerReveal(unit.getLastEvent(), currentShell);

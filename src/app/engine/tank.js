@@ -12,6 +12,7 @@ class Tank extends Unit {
         this.bitcoin = 0;
         this.frags = 0;
         this.lastEvent = Events.TANK_MOVE_UP;
+        this.isDead = false;
     }
 
     getLastEvent() {
@@ -115,6 +116,9 @@ class Tank extends Unit {
     }
 
     move(direction) {
+        if (this.isDead) {
+            return;
+        }
         this.lastEvent = direction;
        // clearTimeout(this.timeout);
         switch (direction) {
@@ -147,28 +151,28 @@ class Tank extends Unit {
     adjustCoordinates(direction, itemForUpdate) {
         switch (direction) {
             case Events.TANK_MOVE_UP: {
-                if(Math.abs(this.posY - itemForUpdate.posY - TILE_PX) < TILE_PX/5){
+                if(Math.abs(this.posY - itemForUpdate.posY - TILE_PX) < TILE_PX/4){
                     this.posY = itemForUpdate.posY + TILE_PX+2;
                 }
                 break;
             }
 
             case Events.TANK_MOVE_DOWN: {
-                if(Math.abs(this.posY - itemForUpdate.posY + TILE_PX) < TILE_PX/5){
+                if(Math.abs(this.posY - itemForUpdate.posY + TILE_PX) < TILE_PX/4){
                     this.posY = itemForUpdate.posY - TILE_PX-2;
                 }
                 break;
             }
 
             case Events.TANK_MOVE_LEFT: {
-                if(Math.abs(this.posX - itemForUpdate.posX - TILE_PX) < TILE_PX/5){
+                if(Math.abs(this.posX - itemForUpdate.posX - TILE_PX) < TILE_PX/4){
                     this.posX = itemForUpdate.posX + TILE_PX+2;
                 }
                 break;
             }
 
             case Events.TANK_MOVE_RIGHT: {
-                if(Math.abs(this.posX - itemForUpdate.posX + TILE_PX) < TILE_PX/5){
+                if(Math.abs(this.posX - itemForUpdate.posX + TILE_PX) < TILE_PX/4){
                     this.posX = itemForUpdate.posX - TILE_PX-2;
                 }
                 break;
@@ -185,25 +189,25 @@ class Tank extends Unit {
     moveUp() {
         const currentY = this.getPosY();
         if (currentY > 0) {
-            this.setPosY(currentY - 1);
+            this.setPosY(currentY - 2);
         }
     }
     moveDown() {
         const currentY = this.getPosY();
         if (currentY < (BATTLE_FIELD_Y_PX - TILE_PX)) {
-            this.setPosY(currentY + 1);
+            this.setPosY(currentY + 2);
         }
     }
     moveLeft() {
         const currentX = this.getPosX();
         if (currentX > 0) {
-            this.setPosX(currentX - 1);
+            this.setPosX(currentX - 2);
         }
     }
     moveRight() {
         const currentX = this.getPosX();
         if (currentX < (BATTLE_FIELD_X_PX - TILE_PX)) {
-            this.setPosX(currentX + 1);
+            this.setPosX(currentX + 2);
         }
 
     }
