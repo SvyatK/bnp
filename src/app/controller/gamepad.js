@@ -61,6 +61,14 @@ function processCustomController(gamepad){
     }
     if (buttonPressed(gamepad.buttons[2])) {
         console.log('click a');
+        units.forEach((unit) => {
+            if (unit.key.includes('player2')){
+                const direction = unit.getLastEvent();
+                const currentShell = new Shell(direction);
+                shells = [...shells, currentShell];
+                EventBus.playerReveal(direction, currentShell);
+            }
+        });
     }
     if (buttonPressed(gamepad.buttons[1])) {
         console.log('click b');
@@ -108,8 +116,11 @@ function processStandardController(gamepad){
         units.forEach((unit) => {
             if (unit.key.includes('player1')){
                 const direction = unit.getLastEvent();
-                EventBus.playerReveal(direction, unit);
-                shells = [...shells, new Shell(direction)];
+                const currentShell = new Shell(direction);
+                currentShell.setPosX(unit.getPosX());
+                currentShell.setPosY(unit.getPosY());
+                shells = [...shells, currentShell];
+                EventBus.playerReveal(direction, currentShell);
             }
         });
     }

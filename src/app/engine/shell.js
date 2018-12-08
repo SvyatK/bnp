@@ -15,6 +15,8 @@ const getImageSource = (directionEvent) => {
         case Events.SHELL_MOVE_RIGHT: {
             return '/images/bullet_right.png';
         }
+        default: 
+            return '/images/bullet_up.png';
     }
 };
 
@@ -32,5 +34,13 @@ export default class Shell extends Facility {
 
     getSpeed() {
         return this.speed;
+    }
+
+    adjustCoordinates() {
+        console.log('adjust shell coordinates');
+    }
+
+    run() {
+        console.log('start loop for shell fly');
     }
 }
