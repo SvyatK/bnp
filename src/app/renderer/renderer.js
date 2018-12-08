@@ -40,7 +40,6 @@ function renderUnits(unitArray) {
                 break;
             }
             default:
-                console.warn('default');
                 break;
         }
 
@@ -86,7 +85,7 @@ function renderHUD(unitArray) {
             //currency icon
             texture = PIXI.Texture.fromImage('/images/bitcoin.png');
             icon = new PIXI.Sprite(texture);
-            icon.x = second ? Constants.GAME_X_PX - 110 : 70;
+            icon.x = second ? Constants.GAME_X_PX - 90 : 70;
             icon.y = Constants.BATTLE_FIELD_Y_PX + 15;
             icon.height = 20;
             icon.width = 20;
@@ -108,19 +107,19 @@ function renderHUD(unitArray) {
 
             //ammo
             let text = new PIXI.Text(unit.getAmmo(), style);
-            text.x = second ? Constants.GAME_X_PX - 70 : 45;
+            text.x = second ? Constants.GAME_X_PX - 55 : 45;
             text.y = Constants.BATTLE_FIELD_Y_PX + 17;
             main.stage.addChild(text);
 
             //currency
             text = new PIXI.Text(unit.getBitcoin(), style);
-            text.x = second ? Constants.GAME_X_PX - 140 : 95;
+            text.x = second ? Constants.GAME_X_PX - 105 : 95;
             text.y = Constants.BATTLE_FIELD_Y_PX + 17;
             main.stage.addChild(text);
 
             //frags
             text = new PIXI.Text(unit.getFrags(), style);
-            text.x = second ? Constants.GAME_X_PX - 210 : 145;
+            text.x = second ? Constants.GAME_X_PX - 155 : 145;
             text.y = Constants.BATTLE_FIELD_Y_PX + 17;
             main.stage.addChild(text);
 
@@ -152,8 +151,10 @@ function renderHUD(unitArray) {
 
             texture = PIXI.Texture.fromImage(unit.getImgSource());
             const graphicItem = new PIXI.Sprite(texture);
-            graphicItem.x = second ? Constants.GAME_X_PX - 200 : 170;
-            graphicItem.y = Constants.BATTLE_FIELD_Y_PX + 40;
+            graphicItem.anchor.set(1);
+            graphicItem.rotation = -Math.PI/2;
+            graphicItem.x = second ? Constants.GAME_X_PX - 160 : 190;
+            graphicItem.y = Constants.BATTLE_FIELD_Y_PX + 45;
             graphicItem.height = Constants.TILE_PX;
             graphicItem.width = Constants.TILE_PX;
             main.stage.addChild(graphicItem);

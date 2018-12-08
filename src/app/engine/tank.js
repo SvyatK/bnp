@@ -1,5 +1,6 @@
 import Unit from './unit';
 import {Events} from "./EventBus";
+import {TILE_PX} from "../constants";
 
 class Tank extends Unit {
     constructor() {
@@ -115,7 +116,7 @@ class Tank extends Unit {
 
     move(direction) {
         this.lastEvent = direction;
-        clearTimeout(this.timeout);
+       // clearTimeout(this.timeout);
         switch (direction) {
             case Events.TANK_MOVE_UP: {
                 this.moveUp();
@@ -143,25 +144,25 @@ class Tank extends Unit {
         }
     }
 
-    adjustCoordinates(direction) {
+    adjustCoordinates(direction, itemForUpdate) {
         switch (direction) {
             case Events.TANK_MOVE_UP: {
-                this.posY = this.posY + 2;
+                this.posY = itemForUpdate.posY + TILE_PX;
                 break;
             }
 
             case Events.TANK_MOVE_DOWN: {
-                this.posY = this.posY - 2;
+                this.posY = itemForUpdate.posY - TILE_PX;
                 break;
             }
 
             case Events.TANK_MOVE_LEFT: {
-                this.posX = this.posX + 2;
+                this.posX = itemForUpdate.posX + TILE_PX;
                 break;
             }
 
             case Events.TANK_MOVE_RIGHT: {
-                this.posX = this.posX - 2;
+                this.posX = itemForUpdate.posX - TILE_PX;
                 break;
             }
 
@@ -175,35 +176,19 @@ class Tank extends Unit {
 
     moveUp() {
         const currentY = this.getPosY();
-
-        if(currentY % 32 !== 0) {
-            this.setPosY(currentY - 1);
-            this.timeout = setTimeout(this.moveUp.bind(this), 1000/30);
-        }
+        this.setPosY(currentY - 1);
     }
     moveDown() {
         const currentY = this.getPosY();
-
-        if(currentY % 32 !== 0) {
-            this.setPosY(currentY + 1);
-            this.timeout = setTimeout(this.moveDown.bind(this), 1000/30);
-        }
+        this.setPosY(currentY + 1);
     }
     moveLeft() {
         const currentX = this.getPosX();
-
-        if(currentX % 32 !== 0) {
-            this.setPosX(currentX - 1);
-            this.timeout = setTimeout(this.moveLeft.bind(this), 1000/30);
-        }
+        this.setPosX(currentX - 1);
     }
     moveRight() {
         const currentX = this.getPosX();
-        if(currentX % 32 !== 0) {
-            this.setPosX(currentX + 1);
-            this.timeout = setTimeout(this.moveRight.bind(this), 1000/30);
-        }
-
+        this.setPosX(currentX + 1);
     }
 
 }
