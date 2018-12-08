@@ -83,7 +83,7 @@ function renderHUD(unitArray) {
             //currency icon
             texture = PIXI.Texture.fromImage('/images/bitcoin.png');
             icon = new PIXI.Sprite(texture);
-            icon.x = second ? Constants.GAME_X_PX - 110 : 90;
+            icon.x = second ? Constants.GAME_X_PX - 110 : 70;
             icon.y = Constants.BATTLE_FIELD_Y_PX + 15;
             icon.height = 20;
             icon.width = 20;
@@ -92,7 +92,7 @@ function renderHUD(unitArray) {
             //frags icon
             texture = PIXI.Texture.fromImage('/images/frags.png');
             icon = new PIXI.Sprite(texture);
-            icon.x = second ? Constants.GAME_X_PX - 180 : 160;
+            icon.x = second ? Constants.GAME_X_PX - 140 : 120;
             icon.y = Constants.BATTLE_FIELD_Y_PX + 15;
             icon.height = 20;
             icon.width = 20;
@@ -105,19 +105,19 @@ function renderHUD(unitArray) {
 
             //ammo
             let text = new PIXI.Text(unit.getAmmo(), style);
-            text.x = second ? Constants.GAME_X_PX - 70 : 50;
+            text.x = second ? Constants.GAME_X_PX - 70 : 45;
             text.y = Constants.BATTLE_FIELD_Y_PX + 17;
             main.stage.addChild(text);
 
             //currency
             text = new PIXI.Text(unit.getBitcoin(), style);
-            text.x = second ? Constants.GAME_X_PX - 140 : 120;
+            text.x = second ? Constants.GAME_X_PX - 140 : 95;
             text.y = Constants.BATTLE_FIELD_Y_PX + 17;
             main.stage.addChild(text);
 
             //frags
             text = new PIXI.Text(unit.getFrags(), style);
-            text.x = second ? Constants.GAME_X_PX - 210 : 190;
+            text.x = second ? Constants.GAME_X_PX - 210 : 145;
             text.y = Constants.BATTLE_FIELD_Y_PX + 17;
             main.stage.addChild(text);
 
