@@ -10,18 +10,25 @@ const stages = new Map();
 stages.set(
     '1',
     {
-        map1,
-        units1,
+        map: map1,
+        units: units1,
     },
+);
+
+
+stages.set(
     '2',
     {
-        map2,
-        units2,
+        map: map2,
+        units: units2,
     },
+);
+
+stages.set(
     '3',
     {
-        map3,
-        units3,
+        map: map3,
+        units: units3,
     },
 );
 

@@ -25,6 +25,7 @@ onNavigation();
 
 function getLevelData(level) {
     const {map: stageMap, units: stageUnits} = stages.get(level);
+    console.log(stages);
 
     mapItems = [];
     for (let i = 0; i < stageMap.scheme.length; i++) {
