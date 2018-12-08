@@ -1,7 +1,6 @@
 import {units} from "../scenarios/scenarios";
 import EventBus from "./EventBus";
 import {TILE_PX} from "../constants";
-import * as pull from 'lodash.pull';
 
 export default class GameState {
     next() {
