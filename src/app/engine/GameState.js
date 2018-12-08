@@ -5,13 +5,6 @@ import * as pull from 'lodash.pull';
 
 export default class GameState {
     next() {
-        units
-            .filter((unit) => {
-                return !(/player/.test(unit.key));
-            })
-            .forEach((unit) => {
-               unit.randomIntent();
-            });
 
         // ===  resolve conflicts
 
@@ -19,11 +12,15 @@ export default class GameState {
         EventBus._queue.forEach((ent) => {
             if (/MOVE/.test(ent.eventName)) {
 
+                let canSendEvent = true;
                 units.forEach((unit) => {
-                        if(unit.key !== ent.object.key && !isIntersects(unit, ent.object)){
-                            ent.object.act(ent.eventName);
+                        if(unit.key !== ent.object.key){
+                            if (isIntersects(unit, ent.object)){
+                                canSendEvent = false;
+                            }
                         }
                     });
+                canSendEvent && ent.object.act(ent.eventName);
             }
         });
 
@@ -53,10 +50,6 @@ function isIntersects ( a, b ) {
     const bx1 = b.posX+TILE_PX;
     const by = b.posY;
     const by1 = b.posY+TILE_PX;
-
-    if(!(ax1 < bx || bx1 < ax || ay1 < by || by1 < ay)){
-        console.log('isIntersects!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    }
 
     return !(ax1 < bx || bx1 < ax || ay1 < by || by1 < ay);
 }

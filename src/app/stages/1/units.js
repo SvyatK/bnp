@@ -1,7 +1,7 @@
 export const units = [
     {
         "key": "player1",
-        "imgSource": "/images/default.gif",
+        "imgSource": "/images/play-button.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
@@ -16,7 +16,7 @@ export const units = [
     },
     {
         "key": "player2",
-        "imgSource": "/images/default.gif",
+        "imgSource": "/images/play-button.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
@@ -31,7 +31,7 @@ export const units = [
     },
     {
         "key": "bot1",
-        "imgSource": "/images/default.gif",
+        "imgSource": "/images/play-button.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
@@ -46,7 +46,7 @@ export const units = [
     },
     {
         "key": "bot2",
-        "imgSource": "/images/default.gif",
+        "imgSource": "/images/play-button.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
@@ -61,7 +61,7 @@ export const units = [
     },
     {
         "key": "bot3",
-        "imgSource": "/images/default.gif",
+        "imgSource": "/images/play-button.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
