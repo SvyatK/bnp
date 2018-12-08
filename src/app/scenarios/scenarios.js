@@ -82,6 +82,6 @@ function getLevelData(level) {
         tank.setCoordinates(item.posX * Constants.TILE_PX, item.posY * Constants.TILE_PX);
         units.push(tank);
     }
-    playSound('stage_start');
+    // playSound('stage_start');
     gameLoop();
 }
