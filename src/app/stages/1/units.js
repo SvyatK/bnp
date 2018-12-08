@@ -31,7 +31,7 @@ export const units = [
     },
     {
         "key": "bot1",
-        "imgSource": "/images/play-button.png",
+        "imgSource": "/images/blue-tank-1.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
@@ -46,7 +46,7 @@ export const units = [
     },
     {
         "key": "bot2",
-        "imgSource": "/images/play-button.png",
+        "imgSource": "/images/blue-tank-1.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
@@ -61,7 +61,7 @@ export const units = [
     },
     {
         "key": "bot3",
-        "imgSource": "/images/play-button.png",
+        "imgSource": "/images/blue-tank-1.png",
         "reloadDuration": 1000,
         "damage": {
             "min": 10,
