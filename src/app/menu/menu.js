@@ -1,19 +1,24 @@
 import Route from '../routes/route';
 import modeMenuItems from './modeMenuItems';
+import gameOverMenuItems from './gameOverMenuItems';
 import main from '../main';
 import * as PIXI from 'pixi.js';
 import { TILE_PX } from '../constants';
 
 class Menu {
-  constructor(title, { stage }) {
+  constructor({ stage }) {
     this._selected_item = 0;
     this._items = [];
     this._stage_ctx = stage;
-    this._title = title;
+    this._title = '';
   }
 
   setItems(items) {
     this._items = items;
+  }
+
+  setTitle(title) {
+    this._title = title;
   }
 
   getCurrentItem() {
@@ -57,12 +62,12 @@ class Menu {
 };
 
 const onNavigation = () => {
+  const menu = new Menu(main);
   switch (Route.getPage()) {
     case Route.PAGES[0]: {
       console.log(Route.PAGES[0]);
-      const menu = new Menu('Select Mode:', main);
+      menu.setTitle('Select Mode:');
       menu.setItems(modeMenuItems);
-      menu.renderMenu();
       // menu.getCurrentItem().execute();
       break;
     }
@@ -80,16 +85,21 @@ const onNavigation = () => {
     }
     case Route.PAGES[4]: {
       console.log(Route.PAGES[4]);
+      menu.setTitle('You Win!');
+      menu.setItems(gameOverMenuItems);
       break;
     }
     case Route.PAGES[5]: {
       console.log(Route.PAGES[5]);
+      menu.setTitle('Game Over!');
+      menu.setItems(gameOverMenuItems);
       break;
     }
     default: {
       // DEL
     }
   }
+  menu.renderMenu();
 }
 
 window.addEventListener('hashchange', onNavigation, false);
