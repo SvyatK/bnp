@@ -190,8 +190,6 @@ function renderShells(shellArray) {
         const graphicItem = new PIXI.Sprite(texture);
         graphicItem.x = Constants.TILE_PX + shell.getPosX();
         graphicItem.y = shell.getPosY();
-        graphicItem.height = Constants.TILE_PX/2;
-        graphicItem.width = Constants.TILE_PX/2;
         main.stage.addChild(graphicItem);
     });
 }
