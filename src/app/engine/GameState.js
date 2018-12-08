@@ -11,7 +11,7 @@ export default class GameState {
         EventBus._queue.forEach((ent) => {
             if (/MOVE/.test(ent.eventName)) {
 
-                let itemForUpdate = null
+                let itemForUpdate = null;
                 let canSendEvent = true;
                 units.forEach((unit) => {
                         if(unit.key !== ent.object.key){

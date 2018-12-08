@@ -5,7 +5,7 @@ import Shell from '../engine/shell';
 const gamepads = [];
 
 window.addEventListener("gamepadconnected", function(e) {
-    var gp = navigator.getGamepads()[e.gamepad.index];
+    const gp = navigator.getGamepads()[e.gamepad.index];
     // make sure that we do not add mouse and keyboard
     if (gp.buttons.length > 10) {
         gamepads.push(gp);

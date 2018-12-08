@@ -5,6 +5,7 @@
   "dependencies": {
     "lodash.pull": "^4.1.0",
     "lodash.random": "^3.2.0",
+    "lodash.without": "^4.4.0",
     "pixi.js": "^4.8.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

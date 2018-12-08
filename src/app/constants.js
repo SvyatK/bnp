@@ -1,3 +1,5 @@
+export const FPS = 30;
+
 export const TILE_PX = 40;
 export const SHELL_PX = 8;
 export const GAME_X_T = 15;
