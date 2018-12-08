@@ -75,3 +75,5 @@ export const units = [
         "posY": 3
     }
 ];
+
+export default units;

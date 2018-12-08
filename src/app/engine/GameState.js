@@ -1,17 +1,19 @@
 import {units} from "../scenarios/scenarios";
+import EventBus from "./EventBus";
+import eventHandler from "./eventHandler";
 
 export default class GameState {
     next() {
         units.forEach((unit) => {
-           unit.act();
+           unit.randomIntent();
         });
-        // iterate over active units
-            // emit their intents
-        // TODO: what with intents?
 
-        // check if collision exist
-            // emit collision events // or replace this events with collision events
+        EventBus._queue.forEach((intent) => {
+            // check if collision exist
+            // resolve collisions
+            eventHandler.handle(intent);
+        });
 
-        // resolve collisions
+        // state changed
     }
 }

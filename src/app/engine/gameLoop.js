@@ -1,13 +1,13 @@
-import {rerender} from "../renderer/renderer";
+import {reRender} from "../renderer/renderer";
 import GameState from "./GameState";
 
 const gameState = new GameState();
 
-export let requestAnimationFrameId = null;
+export let requestAnimationFrameId;
 
 export function gameLoop() {
     gameState.next();
-    rerender();
+    reRender();
 
     requestAnimationFrameId = requestAnimationFrame(gameLoop);
 }

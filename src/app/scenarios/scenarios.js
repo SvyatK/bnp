@@ -74,5 +74,5 @@ function getLevelData(level) {
         tank.setCoordinates(item.posX * Constants.TILE_PX, item.posY * Constants.TILE_PX);
         units.push(tank);
     }
-    Render.rerender();
+    Render.reRender();
 }
