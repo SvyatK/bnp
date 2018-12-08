@@ -15,6 +15,10 @@ const EventBus = {
         };
         this._queue.push(event);
     },
+
+    playerReveal(eventName) {
+        console.warn(eventName);
+    }
 };
 
 export default EventBus;

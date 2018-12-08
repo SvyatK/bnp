@@ -1,4 +1,5 @@
-console.log('gamepad');
+import EventBus from "../engine/EventBus";
+
 const gamepads = [];
 
 window.addEventListener("gamepadconnected", function(e) {
@@ -23,16 +24,16 @@ function buttonPressed(b) {
 
 function processCustomController(gamepad){
     if (gamepad.axes[1] === -1) {
-        console.log('click up');
+        EventBus.playerReveal('click up');
     }
     if (gamepad.axes[1] === 1) {
-        console.log('click down');
+        EventBus.playerReveal('click down');
     }
     if (gamepad.axes[0] === -1) {
-        console.log('click left');
+        EventBus.playerReveal('click left');
     }
     if (gamepad.axes[0] === 1) {
-        console.log('click right');
+        EventBus.playerReveal('click right');
     }
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('click y');
@@ -50,16 +51,16 @@ function processCustomController(gamepad){
 
 function processStandardController(gamepad){
     if (buttonPressed(gamepad.buttons[12])) {
-        console.log('click up');
+        EventBus.playerReveal('click up');
     }
     if (buttonPressed(gamepad.buttons[13])) {
-        console.log('click down');
+        EventBus.playerReveal('click down');
     }
     if (buttonPressed(gamepad.buttons[14])) {
-        console.log('click left');
+        EventBus.playerReveal('click left');
     }
     if (buttonPressed(gamepad.buttons[15])) {
-        console.log('click right');
+        EventBus.playerReveal('click right');
     }
     if (buttonPressed(gamepad.buttons[3])) {
         console.log('click y');
