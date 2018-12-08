@@ -11,10 +11,13 @@ export default class GameState {
         EventBus._queue.forEach((ent) => {
             if (/MOVE/.test(ent.eventName)) {
 
+                let itemForUpdate = null
                 let canSendEvent = true;
                 units.forEach((unit) => {
                         if(unit.key !== ent.object.key){
                             if (isIntersects(unit, ent.object)){
+                                console.log('isIntersects unit', unit);
+                                itemForUpdate = unit;
                                 canSendEvent = false;
                             }
                         }
@@ -22,6 +25,9 @@ export default class GameState {
                 mapItems.forEach((mapItem) => {
                     if (!mapItem.isCrossable) {
                         if( isIntersects(mapItem, ent.object)){
+                            console.log('isIntersects mapItems', JSON.stringify(mapItem));
+                            itemForUpdate = mapItem;
+                            console.log('isIntersects ent.object', JSON.stringify(ent.object));
                             canSendEvent = false;
                         }
                     }
@@ -30,7 +36,8 @@ export default class GameState {
                 if(canSendEvent){
                     ent.object.act(ent.eventName);
                 }else{
-                    ent.object.adjustCoordinates(ent.eventName);
+                    console.log('adjustCoordinates', ent.eventName);
+                    ent.object.adjustCoordinates(ent.eventName, itemForUpdate);
                 }
             }
         });
@@ -53,14 +60,14 @@ export default class GameState {
 // Y axis
 
 function isIntersects ( a, b ) {
-    const ax = a.posX;
-    const ax1 = a.posX+TILE_PX;
-    const ay = a.posY;
-    const ay1 = a.posY+TILE_PX;
-    const bx = b.posX;
-    const bx1 = b.posX+TILE_PX;
-    const by = b.posY;
-    const by1 = b.posY+TILE_PX;
+    const ax = a.posX+2;
+    const ax1 = a.posX+TILE_PX-2;
+    const ay = a.posY+2;
+    const ay1 = a.posY+TILE_PX-2;
+    const bx = b.posX+2;
+    const bx1 = b.posX+TILE_PX-2;
+    const by = b.posY+2;
+    const by1 = b.posY+TILE_PX-2;
 
-    return !(ax1 < bx || bx1 < ax || ay1 < by || by1 < ay);
+    return !(ax1 <= bx || bx1 <= ax || ay1 <= by || by1 <= ay);
 }
