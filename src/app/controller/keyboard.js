@@ -6,7 +6,8 @@ window.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowUp'
         || event.code === 'ArrowDown'
         || event.code === 'ArrowLeft'
-        || event.code === 'ArrowRight') {
+        || event.code === 'ArrowRight'
+        || event.code === 'Space') {
         event.preventDefault();
     }
 
@@ -44,6 +45,15 @@ window.addEventListener('keydown', (event) => {
                 }
             });
 
+            break;
+        }
+        case 'Space': {
+            units.forEach((unit) => {
+                if (unit.key.includes('player1')) {
+                    EventBus.playerReveal(unit.getLastEvent(), unit);
+                }
+            });
+            
             break;
         }
         default:

@@ -1,5 +1,6 @@
 import EventBus, {Events} from "../engine/EventBus";
-import {units} from "../scenarios/scenarios";
+import { units, shells } from "../scenarios/scenarios";
+import Shell from '../engine/shell';
 
 const gamepads = [];
 
@@ -104,6 +105,13 @@ function processStandardController(gamepad){
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('FIRE!!!');
         console.log('click a');
+        units.forEach((unit) => {
+            if (unit.key.includes('player1')){
+                const direction = unit.getLastEvent();
+                EventBus.playerReveal(direction, unit);
+                shells = [...shells, new Shell(direction)];
+            }
+        });
     }
     if (buttonPressed(gamepad.buttons[1])) {
         console.log('click b');

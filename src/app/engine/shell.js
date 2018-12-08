@@ -1,9 +1,29 @@
 import Facility from './facility';
-class Shell extends Facility {
-    constructor() {
+import { Events } from './EventBus';
+
+const getImageSource = (directionEvent) => {
+    switch (directionEvent) { // eslint-disable-line
+        case Events.SHELL_MOVE_UP: {
+            return '/images/bullet_up.png';
+        }
+        case Events.SHELL_MOVE_DOWN: {
+            return '/images/bullet_down.png';
+        }
+        case Events.SHELL_MOVE_LEFT: {
+            return '/images/bullet_left.png';
+        }
+        case Events.SHELL_MOVE_RIGHT: {
+            return '/images/bullet_right.png';
+        }
+    }
+};
+
+export default class Shell extends Facility {
+    constructor(directionEvent) {
         super();
         this.key = undefined;
-        this.speed = 0;
+        this.speed = 2;
+        this.setImgSource(getImageSource(directionEvent));
     }
 
     setSpeed(value) {
