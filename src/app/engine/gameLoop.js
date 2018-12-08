@@ -1,9 +1,13 @@
-const FPS = 30;
+import {rerender} from "../renderer/renderer";
+import GameState from "./GameState";
 
-function gameLoop() {
-    // update game state
-    // re-render
+const gameState = new GameState();
 
-    requestAnimationFrame(gameLoop);
+export let requestAnimationFrameId = null;
+
+export function gameLoop() {
+    gameState.next();
+    rerender();
+
+    requestAnimationFrameId = requestAnimationFrame(gameLoop);
 }
-gameLoop();

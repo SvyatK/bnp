@@ -1,4 +1,6 @@
 import Unit from './unit';
+import EventBus from "./EventBus";
+
 class Tank extends Unit {
     constructor() {
         super();
@@ -101,5 +103,8 @@ class Tank extends Unit {
         return this.speed;
     }
 
+    act() {
+        EventBus.reveal('EVENT!')
+    }
 }
 export default Tank;

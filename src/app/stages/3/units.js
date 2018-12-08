@@ -1,4 +1,4 @@
-[
+export const units = [
     {
         "key": "player1",
         "imgSource": "/images/default.gif",
@@ -26,8 +26,8 @@
         "ammo": 1,
         "armour": 2,
         "speed": 3,
-        "posX": 4,
-        "posY": 4
+        "posX": 1,
+        "posY": 1
     },
     {
         "key": "bot1",
@@ -41,8 +41,8 @@
         "ammo": 1,
         "armour": 2,
         "speed": 3,
-        "posX": 6,
-        "posY": 4
+        "posX": 1,
+        "posY": 1
     },
     {
         "key": "bot2",
