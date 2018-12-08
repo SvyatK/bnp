@@ -1,8 +1,11 @@
 import EventBus, {Events} from "../engine/EventBus";
 import { units, shells } from "../scenarios/scenarios";
 import Shell from '../engine/shell';
+import { SHELL_RELOAD_SPEED } from '../constants';
 
 const gamepads = [];
+let player1Timer = false;
+let player2Timer = false;
 
 window.addEventListener("gamepadconnected", function(e) {
     const gp = navigator.getGamepads()[e.gamepad.index];
@@ -62,11 +65,13 @@ function processCustomController(gamepad){
     if (buttonPressed(gamepad.buttons[2])) {
         console.log('click a');
         units.forEach((unit) => {
-            if (unit.key.includes('player2') && !unit.isDead){
+            if (unit.key.includes('player2') && !unit.isDead && !player2Timer){
                 const currentShell = new Shell(unit);
                 shells.push(currentShell);
                 EventBus.playerReveal(unit.getLastEvent(), currentShell);
                 currentShell.run();
+                player2Timer = true;
+                setTimeout(() => { player2Timer = false }, SHELL_RELOAD_SPEED);
             }
         });
     }
@@ -111,14 +116,15 @@ function processStandardController(gamepad){
         console.log('click x');
     }
     if (buttonPressed(gamepad.buttons[0])) {
-        console.log('FIRE!!!');
         console.log('click a');
         units.forEach((unit) => {
-            if (unit.key.includes('player1') && !unit.isDead){
+            if (unit.key.includes('player1') && !unit.isDead && !player1Timer){
                 const currentShell = new Shell(unit);
                 shells.push(currentShell);
                 EventBus.playerReveal(unit.getLastEvent(), currentShell);
                 currentShell.run();
+                player1Timer = true;
+                setTimeout(() => { player1Timer = false }, SHELL_RELOAD_SPEED);
             }
         });
     }

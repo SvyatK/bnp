@@ -1,6 +1,9 @@
 import { units, shells } from "../scenarios/scenarios";
 import EventBus, {Events} from "../engine/EventBus";
 import Shell from '../engine/shell';
+import { SHELL_RELOAD_SPEED } from '../constants';
+
+let player1Timer = false;
 
 window.addEventListener('keydown', (event) => {
 
@@ -50,11 +53,13 @@ window.addEventListener('keydown', (event) => {
         }
         case 'Space': {
             units.forEach((unit) => {
-                if (unit.key.includes('player1')){
+                if (unit.key.includes('player1') && !player1Timer){
                     const currentShell = new Shell(unit);
                     shells.push(currentShell);
                     EventBus.playerReveal(unit.getLastEvent(), currentShell);
                     currentShell.run();
+                    player1Timer = true;
+                    setTimeout(() => { player1Timer = false }, SHELL_RELOAD_SPEED);
                 }
             });
             
