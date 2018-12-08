@@ -2,7 +2,7 @@ import Sprite from './sprite';
 class Water extends Sprite {
     constructor() {
         super();
-        this.imgSource = '/images/water.jpg';
+        this.imgSource = '/images/water.png';
     }
 }
 export default Water;

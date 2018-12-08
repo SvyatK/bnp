@@ -3,7 +3,7 @@ class Wall extends Entity {
     constructor() {
         super();
         this.armour = 1000;
-        this.imgSource = '/images/wall.jpg';
+        this.imgSource = '/images/wall.png';
     }
 }
 export default Wall;
