@@ -11,7 +11,7 @@ export const units = [
         "ammo": 1,
         "armour": 2,
         "speed": 3,
-        "posX": 4,
+        "posX": 0,
         "posY": 13
     },
     {
@@ -26,7 +26,7 @@ export const units = [
         "ammo": 1,
         "armour": 2,
         "speed": 3,
-        "posX": 8,
+        "posX": 12,
         "posY": 13
     },
     {

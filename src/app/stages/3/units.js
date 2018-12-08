@@ -42,7 +42,7 @@ export const units = [
         "armour": 2,
         "speed": 3,
         "posX": 6,
-        "posY": 0
+        "posY": 1
     },
     {
         "key": "bot2",
@@ -56,8 +56,8 @@ export const units = [
         "ammo": 4,
         "armour": 5,
         "speed": 6,
-        "posX": 12,
-        "posY": 2
+        "posX": 11,
+        "posY": 8
     },
     {
         "key": "bot3",
@@ -71,7 +71,7 @@ export const units = [
         "ammo": 7,
         "armour": 8,
         "speed": 9,
-        "posX": 0,
-        "posY": 2
+        "posX": 1,
+        "posY": 8
     }
 ];

@@ -1,5 +1,6 @@
-import {units} from "../scenarios/scenarios";
+import { units, shells } from "../scenarios/scenarios";
 import EventBus, {Events} from "../engine/EventBus";
+import Shell from '../engine/shell';
 
 window.addEventListener('keydown', (event) => {
 
@@ -50,6 +51,16 @@ window.addEventListener('keydown', (event) => {
         case 'Space': {
             units.forEach((unit) => {
                 if (unit.key.includes('player1')) {
+                    units.forEach((unit) => {
+                        if (unit.key.includes('player1')){
+                            const direction = unit.getLastEvent();
+                            const currentShell = new Shell(direction);
+                            currentShell.setPosX(unit.getPosX());
+                            currentShell.setPosY(unit.getPosY());
+                            shells.push(currentShell);
+                            EventBus.playerReveal(direction, currentShell);
+                        }
+                    });
                     EventBus.playerReveal(unit.getLastEvent(), unit);
                 }
             });
