@@ -50,7 +50,7 @@ window.addEventListener('keydown', (event) => {
         case 'Space': {
             units.forEach((unit) => {
                 if (unit.key.includes('player1')) {
-                    EventBus.playerReveal(unit.getLastEvent(), unit);
+                    EventBus.playerReveal(Event.FIRE, unit);
                 }
             });
             
