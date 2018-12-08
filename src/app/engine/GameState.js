@@ -16,27 +16,17 @@ export default class GameState {
         // ===  resolve conflicts
 
         // check if collision exist
-        const moveEvents = EventBus._queue.filter(ent => /MOVE/.test(ent.eventName));
         EventBus._queue.forEach((ent) => {
             if (/MOVE/.test(ent.eventName)) {
-                moveEvents
-                    .filter((innt) => {
-                        return innt.object !== ent.object;
-                    })
-                    .filter((innt) => {
-                        return isIntersects(innt.object, ent.object);
-                    })
-                    .forEach((innt) => {
-                        // resolve collisions
-                        pull(EventBus._queue, innt, ent); // https://lodash.com/docs/4.17.11#pull
+
+                units.forEach((unit) => {
+                        if(unit.key !== ent.object.key && !isIntersects(unit, ent.object)){
+                            ent.object.act(ent.eventName);
+                        }
                     });
             }
         });
 
-        // fulfill ents
-        EventBus._queue.forEach((ent) => {
-            ent.object.act(ent.eventName);
-        });
         EventBus._queue = [];
     }
 }
@@ -63,6 +53,10 @@ function isIntersects ( a, b ) {
     const bx1 = b.posX+TILE_PX;
     const by = b.posY;
     const by1 = b.posY+TILE_PX;
+
+    if(!(ax1 < bx || bx1 < ax || ay1 < by || by1 < ay)){
+        console.log('isIntersects!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    }
 
     return !(ax1 < bx || bx1 < ax || ay1 < by || by1 < ay);
 }
