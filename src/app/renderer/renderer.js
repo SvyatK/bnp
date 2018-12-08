@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 import * as Constants from "../constants";
 import main from "../main";
 import {mapItems, units, shells} from "../scenarios/scenarios";
+import {Events} from "../engine/EventBus";
 
 function renderEnvironment(items) {
     items.forEach((item) => {
@@ -21,6 +22,25 @@ function renderUnits(unitArray) {
     unitArray.forEach((unit) => {
         const texture = PIXI.Texture.fromImage(unit.getImgSource());
         const graphicItem = new PIXI.Sprite(texture);
+
+        switch (unit.lastEvent) {
+            case Events.TANK_MOVE_UP: {
+                graphicItem.anchor.set(1, 0);
+                graphicItem.rotation = -Math.PI/2;
+                break;
+            }
+            case Events.TANK_MOVE_DOWN: {
+                graphicItem.anchor.set(0, 1);
+                graphicItem.rotation = Math.PI/2;
+                break;
+            }
+            case Events.TANK_MOVE_LEFT: {
+                graphicItem.anchor.set(1, 1);
+                graphicItem.rotation = Math.PI;
+                break;
+            }
+        }
+
         graphicItem.x = Constants.TILE_PX + unit.getPosX();
         graphicItem.y = unit.getPosY();
         graphicItem.height = Constants.TILE_PX;
