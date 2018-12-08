@@ -123,29 +123,31 @@ function renderHUD(unitArray) {
             text.y = Constants.BATTLE_FIELD_Y_PX + 17;
             main.stage.addChild(text);
 
+            const red = 0xc0392b;
+            const blackAlmost = 0x2c3e50;
+            const yellow = 0xf1c40f;
+
             //armor bar
             let graphics = new PIXI.Graphics();
-            graphics.lineStyle(2, 0x0000FF, 1);
-            graphics.beginFill(0xFF700B, 1);
+            graphics.beginFill(blackAlmost, 1);// armor border color
             graphics.drawRect(second ? Constants.GAME_X_PX - 150 : 50, Constants.BATTLE_FIELD_Y_PX + 45, 100, 10);
             graphics.endFill();
             main.stage.addChild(graphics);
             graphics = new PIXI.Graphics();
-            graphics.beginFill(0x00700B, 1);
-            graphics.drawRect(second ? Constants.GAME_X_PX - 150 : 50, Constants.BATTLE_FIELD_Y_PX + 45, unit.getArmour() * 10, 10);
+            graphics.beginFill(red, 1); // armor fill color
+            graphics.drawRect(second ? Constants.GAME_X_PX - 150 : 50, Constants.BATTLE_FIELD_Y_PX + 45, second ? 50 : 75, 10); // unit.getArmour() * 10
             graphics.endFill();
             main.stage.addChild(graphics);
 
             //reload bar
             graphics = new PIXI.Graphics();
-            graphics.lineStyle(2, 0x0000FF, 1);
-            graphics.beginFill(0xFF00FF, 1);
-            graphics.drawRect(second ? Constants.GAME_X_PX - 150 : 50, Constants.BATTLE_FIELD_Y_PX + 70, 100, 10);
+            graphics.beginFill(blackAlmost, 1); // reload border color
+            graphics.drawRect(second ? Constants.GAME_X_PX - 150 : 50, Constants.BATTLE_FIELD_Y_PX + 70, 100, 10); // unit.getReloadDuration() / 10
             graphics.endFill();
             main.stage.addChild(graphics);
             graphics = new PIXI.Graphics();
-            graphics.beginFill(0xFFff00, 1);
-            graphics.drawRect(second ? Constants.GAME_X_PX - 150 : 50, Constants.BATTLE_FIELD_Y_PX + 70, unit.getReloadDuration() / 10, 10);
+            graphics.beginFill(yellow, 1); // reload fill color
+            graphics.drawRect(second ? Constants.GAME_X_PX - 150 : 50, Constants.BATTLE_FIELD_Y_PX + 70, second ? 70 : 85, 10);
             graphics.endFill();
             main.stage.addChild(graphics);
 
