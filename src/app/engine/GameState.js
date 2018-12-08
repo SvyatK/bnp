@@ -1,7 +1,6 @@
 import {units} from "../scenarios/scenarios";
 import EventBus from "./EventBus";
 import {TILE_PX} from "../constants";
-import * as pull from 'lodash.pull';
 
 export default class GameState {
     next() {
@@ -16,16 +15,17 @@ export default class GameState {
         // ===  resolve conflicts
 
         // check if collision exist
-        EventBus._queue.forEach((ent) => {
-            if (/MOVE/.test(ent.eventName)) {
+        EventBus._queue
+            .filter(event => /MOVE/.test(event.eventName))
+            .forEach(event => {
+                const is = units
+                    .filter(unit => unit !== event.object)
+                    .filter(unit => isIntersects(unit, event.object));
 
-                units.forEach((unit) => {
-                        if(unit.key !== ent.object.key && !isIntersects(unit, ent.object)){
-                            ent.object.act(ent.eventName);
-                        }
-                    });
-            }
-        });
+                if (is.length === 0) {
+                    event.object.act(event.eventName);
+                }
+            });
 
         EventBus._queue = [];
     }
