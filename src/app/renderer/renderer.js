@@ -155,7 +155,7 @@ function renderHUD(unitArray) {
             const graphicItem = new PIXI.Sprite(texture);
             graphicItem.anchor.set(1);
             graphicItem.rotation = -Math.PI/2;
-            graphicItem.x = second ? Constants.GAME_X_PX - 160 : 190;
+            graphicItem.x = second ? Constants.GAME_X_PX - 160 : 200;
             graphicItem.y = Constants.BATTLE_FIELD_Y_PX + 45;
             graphicItem.height = Constants.TILE_PX;
             graphicItem.width = Constants.TILE_PX;
