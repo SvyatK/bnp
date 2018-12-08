@@ -16,6 +16,3 @@ for(const stage in stages) {
   const tanks = [];
   console.log(tanks);
 }
-
-console.log('bootstrap');
-

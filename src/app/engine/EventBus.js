@@ -4,11 +4,6 @@ const EventBus = {
     _queue: [],
 
     reveal(eventName, object) {
-        // console.log(this);
-        // console.log(eventName);
-        // console.log(object);
-        // debugger;
-
         const event = {
             eventName,
             object, // tank

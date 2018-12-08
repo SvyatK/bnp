@@ -131,13 +131,6 @@ class Tank extends Unit {
                 break;
             }
         }
-
-        const currentX = this.getPosX();
-        const currentY = this.getPosY();
-        // console.log('bot position', {
-        //     currentX,
-        //     currentY,
-        // });
     }
 
     moveUp() {
