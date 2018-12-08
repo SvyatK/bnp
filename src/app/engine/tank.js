@@ -1,5 +1,6 @@
 import Unit from './unit';
 import {Events} from "./EventBus";
+import {TILE_PX} from "../constants";
 
 class Tank extends Unit {
     constructor() {
@@ -146,22 +147,22 @@ class Tank extends Unit {
     adjustCoordinates(direction, itemForUpdate) {
         switch (direction) {
             case Events.TANK_MOVE_UP: {
-                this.posY = itemForUpdate.posY + 32;
+                this.posY = itemForUpdate.posY + TILE_PX;
                 break;
             }
 
             case Events.TANK_MOVE_DOWN: {
-                this.posY = itemForUpdate.posY - 32;
+                this.posY = itemForUpdate.posY - TILE_PX;
                 break;
             }
 
             case Events.TANK_MOVE_LEFT: {
-                this.posX = itemForUpdate.posX + 32;
+                this.posX = itemForUpdate.posX + TILE_PX;
                 break;
             }
 
             case Events.TANK_MOVE_RIGHT: {
-                this.posX = itemForUpdate.posX - 32;
+                this.posX = itemForUpdate.posX - TILE_PX;
                 break;
             }
 
