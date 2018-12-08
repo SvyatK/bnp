@@ -11,8 +11,12 @@ const EventBus = {
         this._queue.push(event);
     },
 
-    playerReveal(eventName) {
-        console.warn(eventName);
+    playerReveal(eventName, object) {
+        const event = {
+            eventName,
+            object
+        };
+        this._queue.push(event);
     }
 };
 

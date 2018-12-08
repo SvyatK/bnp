@@ -1,4 +1,5 @@
-import EventBus from "../engine/EventBus";
+import EventBus, {Events} from "../engine/EventBus";
+import {units} from "../scenarios/scenarios";
 
 const gamepads = [];
 
@@ -24,16 +25,32 @@ function buttonPressed(b) {
 
 function processCustomController(gamepad){
     if (gamepad.axes[1] === -1) {
-        EventBus.playerReveal('click up');
+        units.forEach((unit) => {
+            if (unit.key.includes('player2')){
+                EventBus.playerReveal(Events.TANK_MOVE_UP, unit);
+            }
+        });
     }
     if (gamepad.axes[1] === 1) {
-        EventBus.playerReveal('click down');
+        units.forEach((unit) => {
+            if (unit.key.includes('player2')){
+                EventBus.playerReveal(Events.TANK_MOVE_DOWN, unit);
+            }
+        });
     }
     if (gamepad.axes[0] === -1) {
-        EventBus.playerReveal('click left');
+        units.forEach((unit) => {
+            if (unit.key.includes('player2')){
+                EventBus.playerReveal(Events.TANK_MOVE_LEFT, unit);
+            }
+        });
     }
     if (gamepad.axes[0] === 1) {
-        EventBus.playerReveal('click right');
+        units.forEach((unit) => {
+            if (unit.key.includes('player2')){
+                EventBus.playerReveal(Events.TANK_MOVE_RIGHT, unit);
+            }
+        });
     }
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('click y');
@@ -51,16 +68,32 @@ function processCustomController(gamepad){
 
 function processStandardController(gamepad){
     if (buttonPressed(gamepad.buttons[12])) {
-        EventBus.playerReveal('click up');
+        units.forEach((unit) => {
+            if (unit.key.includes('player1')){
+                EventBus.playerReveal(Events.TANK_MOVE_UP, unit);
+            }
+        });
     }
     if (buttonPressed(gamepad.buttons[13])) {
-        EventBus.playerReveal('click down');
+        units.forEach((unit) => {
+            if (unit.key.includes('player1')){
+                EventBus.playerReveal(Events.TANK_MOVE_DOWN, unit);
+            }
+        });
     }
     if (buttonPressed(gamepad.buttons[14])) {
-        EventBus.playerReveal('click left');
+        units.forEach((unit) => {
+            if (unit.key.includes('player1')){
+                EventBus.playerReveal(Events.TANK_MOVE_LEFT, unit);
+            }
+        });
     }
     if (buttonPressed(gamepad.buttons[15])) {
-        EventBus.playerReveal('click right');
+        units.forEach((unit) => {
+            if (unit.key.includes('player1')){
+                EventBus.playerReveal(Events.TANK_MOVE_RIGHT, unit);
+            }
+        });
     }
     if (buttonPressed(gamepad.buttons[3])) {
         console.log('click y');
@@ -69,6 +102,7 @@ function processStandardController(gamepad){
         console.log('click x');
     }
     if (buttonPressed(gamepad.buttons[0])) {
+        console.log('FIRE!!!');
         console.log('click a');
     }
     if (buttonPressed(gamepad.buttons[1])) {

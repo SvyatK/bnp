@@ -9,5 +9,5 @@ export function gameLoop() {
     gameState.next();
     reRender();
 
-    requestAnimationFrameId = requestAnimationFrame(gameLoop);
+    requestAnimationFrameId = setTimeout(gameLoop, 1000/30);
 }

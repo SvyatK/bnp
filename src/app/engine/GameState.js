@@ -5,14 +5,18 @@ import eventHandler from "./eventHandler";
 export default class GameState {
     next() {
         units.forEach((unit) => {
-           unit.randomIntent();
+            if (!unit.key.includes('player')){
+                //unit.randomIntent();
+            }
         });
 
-        EventBus._queue.forEach((intent) => {
+        EventBus._queue.forEach((event) => {
             // check if collision exist
             // resolve collisions
-            eventHandler.handle(intent);
+            event.object.act(event.eventName);
         });
+
+        EventBus._queue = [];
 
         // state changed
     }

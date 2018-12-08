@@ -11,6 +11,11 @@ class Tank extends Unit {
         this.maxDamage = 0;
         this.bitcoin = 0;
         this.frags = 0;
+        this.lastEvent = Events.TANK_MOVE_UP;
+    }
+
+    getLastEvent() {
+        return this.lastEvent;
     }
 
     setBitcoin(value) {
@@ -110,6 +115,7 @@ class Tank extends Unit {
     }
 
     move(direction) {
+        this.lastEvent = direction;
         switch (direction) {
             case Events.TANK_MOVE_UP: {
                 this.moveUp();

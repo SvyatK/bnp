@@ -11,8 +11,8 @@ export const units = [
         "ammo": 1,
         "armour": 2,
         "speed": 3,
-        "posX": 1,
-        "posY": 1
+        "posX": 4,
+        "posY": 13
     },
     {
         "key": "player2",
@@ -26,8 +26,8 @@ export const units = [
         "ammo": 1,
         "armour": 2,
         "speed": 3,
-        "posX": 1,
-        "posY": 1
+        "posX": 8,
+        "posY": 13
     },
     {
         "key": "bot1",
@@ -41,8 +41,8 @@ export const units = [
         "ammo": 1,
         "armour": 2,
         "speed": 3,
-        "posX": 1,
-        "posY": 1
+        "posX": 6,
+        "posY": 0
     },
     {
         "key": "bot2",
@@ -56,7 +56,7 @@ export const units = [
         "ammo": 4,
         "armour": 5,
         "speed": 6,
-        "posX": 2,
+        "posX": 12,
         "posY": 2
     },
     {
@@ -71,7 +71,7 @@ export const units = [
         "ammo": 7,
         "armour": 8,
         "speed": 9,
-        "posX": 3,
-        "posY": 3
+        "posX": 0,
+        "posY": 2
     }
 ];

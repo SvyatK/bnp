@@ -10,6 +10,7 @@ import stages from '../stages/stages';
 
 export let mapItems = [];
 export let units = [];
+export let shells = [];
 export let player1 = null;
 export let player2 = null;
 

@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import * as Constants from "../constants";
 import main from "../main";
-import {mapItems, units} from "../scenarios/scenarios";
+import {mapItems, units, shells} from "../scenarios/scenarios";
 
 function renderEnvironment(items) {
     items.forEach((item) => {
@@ -138,9 +138,23 @@ function renderHUD(unitArray) {
     });
 }
 
+
+function renderShells(shellArray) {
+    shellArray.forEach((shell) => {
+        const texture = PIXI.Texture.fromImage(shell.getImgSource());
+        const graphicItem = new PIXI.Sprite(texture);
+        graphicItem.x = Constants.TILE_PX + shell.getPosX();
+        graphicItem.y = shell.getPosY();
+        graphicItem.height = Constants.TILE_PX/2;
+        graphicItem.width = Constants.TILE_PX/2;
+        main.stage.addChild(graphicItem);
+    });
+}
+
 export function reRender() {
     main.stage.removeChildren();
     renderEnvironment(mapItems);
     renderUnits(units);
-    renderHUD(units)
+    renderHUD(units);
+    renderShells(shells);
 }
