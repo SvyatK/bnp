@@ -2,6 +2,8 @@ import Route from '../routes/route';
 import modeMenuItems from './modeMenuItems';
 import gameOverMenuItems from './gameOverMenuItems';
 import scoresMenuItems from './scoresMenuItems';
+import stageMenuItems from './stageMenuItems';
+import winMenuItems from './winMenuItems';
 import main from '../main';
 import * as PIXI from 'pixi.js';
 import { TILE_PX } from '../constants';
@@ -74,6 +76,8 @@ const onNavigation = () => {
     }
     case Route.PAGES[1]: {
       console.log(Route.PAGES[1]);
+      menu.setTitle('Stage:');
+      menu.setItems(stageMenuItems);
       break;
     }
     case Route.PAGES[2]: {
@@ -89,7 +93,7 @@ const onNavigation = () => {
     case Route.PAGES[4]: {
       console.log(Route.PAGES[4]);
       menu.setTitle('You Win!');
-      menu.setItems(gameOverMenuItems);
+      menu.setItems(winMenuItems);
       break;
     }
     case Route.PAGES[5]: {

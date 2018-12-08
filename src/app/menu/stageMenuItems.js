@@ -1,9 +1,9 @@
 import MenuItem from './menuItem';
 
-class SingleMenuItem extends MenuItem {
+class NewGameMenuItem extends MenuItem {
   constructor() {
     super();
-    this.setTitle('Single player');
+    this.setTitle('New Game');
   }
 
   execute() {
@@ -11,10 +11,10 @@ class SingleMenuItem extends MenuItem {
   }
 }
 
-class CooperativeMenuItem extends MenuItem {
+class ContinueMenuItem extends MenuItem {
   constructor() {
     super();
-    this.setTitle('Cooperative');
+    this.setTitle('Continue');
   }
 
   execute() {
@@ -22,10 +22,10 @@ class CooperativeMenuItem extends MenuItem {
   }
 }
 
-class ExitMenuItem extends MenuItem {
+class BackMenuItem extends MenuItem {
   constructor() {
     super();
-    this.setTitle('Exit');
+    this.setTitle('Back');
   }
 
   execute() {
@@ -34,7 +34,7 @@ class ExitMenuItem extends MenuItem {
 }
 
 export default [
-  new SingleMenuItem(),
-  new CooperativeMenuItem(),
-  new ExitMenuItem(),
+  new NewGameMenuItem(),
+  new ContinueMenuItem(),
+  new BackMenuItem(),
 ];

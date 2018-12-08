@@ -1,15 +1,28 @@
 import MenuItem from './menuItem';
 
-class ScoresMenuItem extends MenuItem {
+class NextStageMenuItem extends MenuItem {
   constructor() {
     super();
-    this.setTitle('CONTINUE');
+    this.setTitle('Next Stage');
   }
 
   execute() {
     console.log(`menu item ${this.getTitle()} selected`);
   }
 }
+
+class BackMenuItem extends MenuItem {
+  constructor() {
+    super();
+    this.setTitle('Back');
+  }
+
+  execute() {
+    console.log(`menu item ${this.getTitle()} selected`);
+  }
+}
+
 export default [
-  new ScoresMenuItem(),
+  new NextStageMenuItem(),
+  new BackMenuItem(),
 ];
