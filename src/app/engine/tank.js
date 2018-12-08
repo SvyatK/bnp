@@ -147,22 +147,30 @@ class Tank extends Unit {
     adjustCoordinates(direction, itemForUpdate) {
         switch (direction) {
             case Events.TANK_MOVE_UP: {
-                this.posY = itemForUpdate.posY + TILE_PX;
+                if(Math.abs(this.posY - itemForUpdate.posY - TILE_PX) < TILE_PX/4){
+                    this.posY = itemForUpdate.posY + TILE_PX+2;
+                }
                 break;
             }
 
             case Events.TANK_MOVE_DOWN: {
-                this.posY = itemForUpdate.posY - TILE_PX;
+                if(Math.abs(this.posY - itemForUpdate.posY + TILE_PX) < TILE_PX/4){
+                    this.posY = itemForUpdate.posY - TILE_PX-2;
+                }
                 break;
             }
 
             case Events.TANK_MOVE_LEFT: {
-                this.posX = itemForUpdate.posX + TILE_PX;
+                if(Math.abs(this.posX - itemForUpdate.posX - TILE_PX) < TILE_PX/4){
+                    this.posX = itemForUpdate.posX + TILE_PX+2;
+                }
                 break;
             }
 
             case Events.TANK_MOVE_RIGHT: {
-                this.posX = itemForUpdate.posX - TILE_PX;
+                if(Math.abs(this.posX - itemForUpdate.posX + TILE_PX) < TILE_PX/4){
+                    this.posX = itemForUpdate.posX - TILE_PX-2;
+                }
                 break;
             }
 

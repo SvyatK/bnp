@@ -22,17 +22,18 @@ export default class GameState {
                             }
                         }
                     });
-                mapItems.forEach((mapItem) => {
+                for (let i = 0; i < mapItems.length; i++){
+                    let mapItem = mapItems[i];
                     if (!mapItem.isCrossable) {
                         if( isIntersects(mapItem, ent.object)){
                             console.log('isIntersects mapItems', JSON.stringify(mapItem));
                             itemForUpdate = mapItem;
                             console.log('isIntersects ent.object', JSON.stringify(ent.object));
                             canSendEvent = false;
+                            break;
                         }
                     }
-                });
-
+                }
                 if(canSendEvent){
                     ent.object.act(ent.eventName);
                 }else{
