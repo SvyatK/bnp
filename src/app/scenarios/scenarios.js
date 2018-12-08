@@ -4,10 +4,10 @@ import Wall from '../engine/wall';
 import Water from '../engine/water';
 import Route from '../routes/route';
 import * as Constants from '../constants.js';
-import * as Render from "../renderer/renderer";
 import Tank from "../engine/tank";
 import stages from '../stages/stages';
-import {gameLoop} from "../engine/gameLoop";
+import {gameLoop, requestAnimationFrameId} from "../engine/gameLoop";
+import playSound from "../soundPlayer";
 
 export let mapItems = [];
 export let units = [];
@@ -16,6 +16,7 @@ export let player1 = null;
 export let player2 = null;
 
 function onNavigation(){
+    window.cancelAnimationFrame(requestAnimationFrameId);
     if (Route.getPage().includes('scenario')) {
         getLevelData(Route.getPage().split("/")[1]);
     }
@@ -76,5 +77,6 @@ function getLevelData(level) {
         tank.setCoordinates(item.posX * Constants.TILE_PX, item.posY * Constants.TILE_PX);
         units.push(tank);
     }
+    playSound('stage_start');
     gameLoop();
 }
