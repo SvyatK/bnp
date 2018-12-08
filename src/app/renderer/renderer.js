@@ -138,7 +138,7 @@ function renderHUD(unitArray) {
     });
 }
 
-export function rerender() {
+export function reRender() {
     main.stage.removeChildren();
     renderEnvironment(mapItems);
     renderUnits(units);

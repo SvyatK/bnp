@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import './app/menu/menu.js';
-import './app/engine/engine.js';
 import './app/scenarios/scenarios.js';
 import './app/controller/keyboard.js';
 import './app/controller/gamepad.js';
 import main from './app/main';
+import {gameLoop, requestAnimationFrameId} from "./app/engine/gameLoop";
 
 
 class App extends Component {
@@ -13,10 +13,13 @@ class App extends Component {
   componentDidMount() {
     this.app = main;
     this.gameCanvas.appendChild(main.view);
+
+    gameLoop();
   }
 
   componentWillUnmount() {
     this.app.stop();
+    window.cancelAnimationFrame(requestAnimationFrameId);
   }
 
   render() {

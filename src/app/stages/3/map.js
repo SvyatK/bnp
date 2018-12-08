@@ -1,4 +1,4 @@
-{
+export const map = {
     "name": "Third meet",
     "scheme": [
         "0000000000000",
@@ -14,5 +14,5 @@
         "0w0w0w0w0w0w0",
         "0w0w0w0w0w0w0",
         "0w0w00000w0w0",
-        "0bb00ww00rr00"]
-}
+        "00000ww000000"]
+};

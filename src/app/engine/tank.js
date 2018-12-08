@@ -1,4 +1,7 @@
 import Unit from './unit';
+import EventBus, {Events} from "./EventBus";
+import * as random from 'lodash.random';
+
 class Tank extends Unit {
     constructor() {
         super();
@@ -101,5 +104,70 @@ class Tank extends Unit {
         return this.speed;
     }
 
+    act(eventName) {
+        // TODO: check events
+        this.move(eventName);
+    }
+
+    move(direction) {
+        switch (direction) {
+            case Events.TANK_MOVE_UP: {
+                this.moveUp();
+                break;
+            }
+
+            case Events.TANK_MOVE_DOWN: {
+                this.moveDown();
+                break;
+            }
+
+            case Events.TANK_MOVE_LEFT: {
+                this.moveLeft();
+                break;
+            }
+
+            case Events.TANK_MOVE_RIGHT: {
+                this.moveRight();
+                break;
+            }
+        }
+
+        const currentX = this.getPosX();
+        const currentY = this.getPosY();
+        // console.log('bot position', {
+        //     currentX,
+        //     currentY,
+        // });
+    }
+
+    moveUp() {
+        const currentY = this.getPosY();
+        this.setPosY(currentY - 1);
+    }
+    moveDown() {
+        const currentY = this.getPosY();
+        this.setPosY(currentY + 1);
+    }
+    moveLeft() {
+        const currentX = this.getPosX();
+        this.setPosX(currentX - 1);
+    }
+    moveRight() {
+        const currentX = this.getPosX();
+        this.setPosX(currentX + 1);
+    }
+
+    randomIntent() {
+        const move = random(0, 3);
+
+        const events = [
+            Events.TANK_MOVE_UP,
+            Events.TANK_MOVE_DOWN,
+            Events.TANK_MOVE_LEFT,
+            Events.TANK_MOVE_RIGHT,
+        ];
+
+        EventBus.reveal(events[move], this);
+    }
 }
 export default Tank;
